@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import customData.*;
 
@@ -25,5 +24,11 @@ public abstract class SceneCanvas extends JComponent {
 
     protected ArrayList<DrawingObject> draw() {
         return null;
+    }
+
+    protected void animateStep(float delta) {
+        for (DrawingObject dObject : drawingObjects) {
+            dObject.animateStep(delta);
+        }
     }
 }

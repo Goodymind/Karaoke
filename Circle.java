@@ -27,5 +27,11 @@ public class Circle implements DrawingObject{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
     }
+
+    @Override
+    public void animateStep(float delta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
+    }
     
 }

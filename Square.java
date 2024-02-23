@@ -18,7 +18,7 @@ public class Square implements DrawingObject {
         this.y = y;
         this.size = size;
         this.color = color;
-        this.angle = Math.toRadians(angle);
+        this.angle = angle;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Square implements DrawingObject {
 
         Rectangle2D.Double rect = new Rectangle2D.Double(x, y, size, size);
         g2d.setColor(color);
-        g2d.rotate(angle, x + size / 2, y + size / 2);
+        g2d.rotate(Math.toRadians(angle), x + size / 2, y + size / 2);
         g2d.fill(rect);
         
         g2d.setTransform(reset);
@@ -42,6 +42,11 @@ public class Square implements DrawingObject {
     @Override
     public Vector getPosition() {
         return new Vector(x, y);
+    }
+
+    @Override
+    public void animateStep(float delta) {
+        angle += 90 * delta;
     }
     
 }
