@@ -1,39 +1,47 @@
-import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.sound.sampled.*;
+import javax.swing.Timer;
+
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.*;
 
-public class SceneFrame {
+public class SceneFrame extends JFrame {
     private String title;
-    private JFrame frame;
     private int width;
     private int height;
-    private SceneCanvas sceneCanvas;
     private JButton playMusicButton;
     private Clip clip;
+    private SceneCanvas current_scene;
+    private Timer timer;
+    private long previousTime;
 
-    public SceneFrame(int width, int height, String title) {
+    public SceneFrame(String title, int width, int height) {
+        this.title = title;
         this.width = width;
         this.height = height;
-        this.title = title;
         playMusicButton = new JButton("Play [Insert Song Name]");
-        sceneCanvas = new SceneCanvas();
+        current_scene = new SceneCanvas();
+        setUpGUI();
     }
 
     public void setUpGUI() {
-        frame = new JFrame(title);
-        frame.setSize(width, height);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle(title);
+        setSize(width, height);
+        current_scene = new SceneCanvas();
+        add(current_scene);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Container contentPane = frame.getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(playMusicButton);
         contentPane.add(buttonPanel, BorderLayout.NORTH);
-        contentPane.add(sceneCanvas, BorderLayout.CENTER);
+        contentPane.add(current_scene, BorderLayout.CENTER);
 
         playMusicButton.addActionListener(new ActionListener() {
             @Override
@@ -42,10 +50,10 @@ public class SceneFrame {
             }
         });
 
-        sceneCanvas.setPreferredSize(new Dimension(800, 600));
+        current_scene.setPreferredSize(new Dimension(800, 600));
 
-        frame.pack();
-        frame.setVisible(true);
+        pack();
+        setVisible(true);
     }
 
     private void playAudio(String filePath) {
@@ -65,7 +73,7 @@ public class SceneFrame {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             // Handle exceptions
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(frame, "Error playing audio!");
+            JOptionPane.showMessageDialog(this, "Error playing audio!");
         } finally {
             // Close the clip and audio stream to release resources
             if (clip != null) {
@@ -74,4 +82,30 @@ public class SceneFrame {
         }
     }
 
+    public void startAnimation() {
+        ActionListener timerListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                long currentTime = System.nanoTime();
+                animateStep((currentTime - previousTime) / 1_000_000_000f);
+                previousTime = currentTime;
+            }
+        };
+        timer = new Timer(0, timerListener);
+        timer.setRepeats(true);
+        timer.start();
+        previousTime = System.currentTimeMillis();
+    }
+
+    /**
+     * Calls the animateStep of the current canvas scene (will be the one that is
+     * currently in display)
+     * repaint tells the computer to call paintComponent again
+     * 
+     * @param delta time between last call in seconds
+     */
+    public void animateStep(float delta) {
+        current_scene.animateStep(delta);
+        current_scene.repaint();
+    }
 }

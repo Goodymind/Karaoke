@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
+
 import customData.Vector;
 
 public class Square implements DrawingObject {
@@ -6,25 +9,44 @@ public class Square implements DrawingObject {
     private double x;
     private double y;
     private double size;
-    private Color[] colors;
+    private Color color;
+    private double angle;
     
+
+    public Square(double x, double y, double angle, double size, Color color) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+        this.angle = angle;
+    }
 
     @Override
     public void draw(Graphics2D g2d) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
+        AffineTransform reset = g2d.getTransform();
+
+        Rectangle2D.Double rect = new Rectangle2D.Double(x, y, size, size);
+        g2d.setColor(color);
+        g2d.rotate(Math.toRadians(angle), x + size / 2, y + size / 2);
+        g2d.fill(rect);
+        
+        g2d.setTransform(reset);
     }
 
     @Override
     public void setPosition(Vector vector) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPosition'");
+        x = vector.getX();
+        y = vector.getY();
     }
 
     @Override
     public Vector getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+        return new Vector(x, y);
+    }
+
+    @Override
+    public void animateStep(float delta) {
+        angle += 90 * delta;
     }
     
 }
