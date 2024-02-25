@@ -9,8 +9,7 @@ public class Circle implements DrawingObject {
     private double size;
     private Color color;
 
-    @Override
-    public Circle(double x, double y, double size, double size) {
+    public Circle(double x, double y, double size, Color color) {
         this.x = x;
         this.y = y;
         this.size = size;
