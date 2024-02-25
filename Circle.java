@@ -1,16 +1,22 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
-
 import customData.Vector;
 
-public class Circle implements DrawingObject{
+public class Circle implements DrawingObject {
 
     private double x;
     private double y;
     private double size;
-    private Color[] colors;
+    private Color color;
 
     @Override
+    public Circle(double x, double y, double size, double size) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+    }
+
     public void draw(Graphics2D g2d) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'draw'");
@@ -24,8 +30,7 @@ public class Circle implements DrawingObject{
 
     @Override
     public Vector getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+        return new Vector(x, y);
     }
 
     @Override
@@ -33,5 +38,5 @@ public class Circle implements DrawingObject{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
     }
-    
+
 }
