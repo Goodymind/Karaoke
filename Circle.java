@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import customData.Vector;
 
 public class Circle implements DrawingObject {
@@ -17,14 +19,18 @@ public class Circle implements DrawingObject {
     }
 
     public void draw(Graphics2D g2d) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
+        AffineTransform reset = g2d.getTransform();
+        Ellipse2D.Double e = new Ellipse2D.Double(0, 0, size, size);
+        g2d.translate(x, y);
+        g2d.setColor(color);
+        g2d.fill(e);
+        g2d.setTransform(reset);
     }
 
     @Override
     public void setPosition(Vector vector) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPosition'");
+        x = vector.getX();
+        y = vector.getY();
     }
 
     @Override
@@ -34,8 +40,6 @@ public class Circle implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
+        //none
     }
-
 }

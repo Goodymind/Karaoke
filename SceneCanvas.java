@@ -10,7 +10,7 @@ public class SceneCanvas extends JComponent {
 
     public SceneCanvas() {
         setPreferredSize(size);
-        drawingObjects = new ArrayList<>();
+        drawingObjects = draw();
     }
 
     @Override
@@ -26,6 +26,9 @@ public class SceneCanvas extends JComponent {
     }
 
     protected void animateStep(float delta) {
+        for (DrawingObject drawingObject : drawingObjects) {
+            drawingObject.animateStep(delta);
+        }
     }
 
     protected ArrayList<DrawingObject> draw() {

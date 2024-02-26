@@ -1,83 +1,71 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.sound.sampled.*;
-import java.io.*;
 
 public class SceneFrame {
     private String title;
     private JFrame frame;
-    private int width;
-    private int height;
-    private JButton playMusicButton;
-    private JButton playOtherSongButton1;
-    private JButton playOtherSongButton2;
+    private JButton song_one;
+    private JButton song_two;
+    private JButton song_three;
     private JButton stopButton;
     private SceneCanvas current_scene;
     private Timer timer;
     private long previousTime;
-    private Clip clip;
 
     public SceneFrame(String title, int width, int height) {
         this.title = title;
-        this.width = width;
-        this.height = height;
-        playMusicButton = new JButton("Play Creep(Acoustic) - Radiohead");
-        playOtherSongButton1 = new JButton("Play Para Sa Akin - Jason Dhakal");
-        playOtherSongButton2 = new JButton("Play Love - Keyshia Cole");
+        song_one = new JButton("Play Creep(Acoustic) - Radiohead");
+        song_two = new JButton("Play Para Sa Akin - Jason Dhakal");
+        song_three = new JButton("Play Love - Keyshia Cole");
         stopButton = new JButton("Stop Music");
-        current_scene = new SceneCanvas();
+        current_scene = new Test();
     }
 
     public void setUpGUI() {
         frame = new JFrame(title);
-        frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
-
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(playMusicButton);
-        buttonPanel.add(playOtherSongButton1);
-        buttonPanel.add(playOtherSongButton2);
-        buttonPanel.add(stopButton);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH);
         contentPane.add(current_scene, BorderLayout.CENTER);
-
-        playMusicButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String filePath = "C:\\Users\\biaso\\Documents\\GitHub\\Karaoke\\Audios\\Creep.wav";
-                playAudio(filePath);
-            }
-        });
-
-        playOtherSongButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String filePath = "Audios/ParaSaAkin.wav";
-                playAudio(filePath);
-            }
-        });
-
-        playOtherSongButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                String filePath = "C:\\Users\\biaso\\Documents\\GitHub\\Karaoke\\Audios\\Love.wav";
-                playAudio(filePath);
-            }
-        });
-
-        stopButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                stopAudio();
-            }
-        });
+        
+        setUpKaraokeControls(contentPane);
 
         frame.setVisible(true);
         frame.pack();
+    }
+
+    private void setUpKaraokeControls(Container contentPane) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(song_one);
+        buttonPanel.add(song_two);
+        buttonPanel.add(song_three);
+        buttonPanel.add(stopButton);
+        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+        
+        ActionListener karaokeButtonControlListeners = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (ae.getSource() == song_one) {
+                    KaraokeAudio.startAudio("Creep");
+                }
+                if (ae.getSource() == song_two) {
+                    KaraokeAudio.startAudio("Para Sa Akin");
+                }
+                if (ae.getSource() == song_three) {
+                    KaraokeAudio.startAudio("Love");
+                }
+                if (ae.getSource() == stopButton) {
+                    KaraokeAudio.stopAudio();
+                }
+            }
+        };
+        song_one.addActionListener(karaokeButtonControlListeners);
+        song_two.addActionListener(karaokeButtonControlListeners);
+        song_three.addActionListener(karaokeButtonControlListeners);
+        stopButton.addActionListener(karaokeButtonControlListeners);
     }
 
     public void startAnimation() {
@@ -105,27 +93,5 @@ public class SceneFrame {
         // Implement animation logic
         current_scene.animateStep(delta);
         current_scene.repaint();
-    }
-
-    public void playAudio(String filePath) {
-        try {
-            File audioFile = new File(filePath);
-            if (audioFile.exists()) {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-                clip = AudioSystem.getClip();
-                clip.open(audioStream);
-                clip.start();
-            } else {
-                System.out.println("File not found: " + filePath);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void stopAudio() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-        }
     }
 }

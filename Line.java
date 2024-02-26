@@ -31,7 +31,6 @@ public class Line implements DrawingObject {
     public void setPosition(Vector vector) {
         this.startx = vector.getX();
         this.starty = vector.getY();
-        throw new UnsupportedOperationException("Unimplemented method 'setPosition'");
     }
 
     @Override
@@ -42,7 +41,6 @@ public class Line implements DrawingObject {
     @Override
     public void animateStep(float delta) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
     }
 
 }
