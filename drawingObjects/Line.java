@@ -1,5 +1,8 @@
+package drawingObjects;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
 
 import customData.Vector;
 
@@ -9,10 +12,10 @@ public class Line implements DrawingObject {
     private double starty;
     private double endx;
     private double endy;
-    private double thickness;
+    private int thickness;
     private Color color;
 
-    public Line(double startx, double starty, double endx, double endy, double thickness, Color color) {
+    public Line(double startx, double starty, double endx, double endy, int thickness, Color color) {
         this.startx = startx;
         this.starty = starty;
         this.endx = endx;
@@ -23,14 +26,20 @@ public class Line implements DrawingObject {
 
     @Override
     public void draw(Graphics2D g2d) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
+        var reset = g2d.getTransform();
+        Line2D.Double l = new Line2D.Double(startx, starty, endx, endy);
+        g2d.setColor(color);
+        g2d.setStroke(new BasicStroke(thickness));
+        g2d.draw(l);
+        g2d.setTransform(reset);
     }
 
     @Override
     public void setPosition(Vector vector) {
-        this.startx = vector.getX();
-        this.starty = vector.getY();
+        startx += vector.getX();
+        starty += vector.getY();
+        endx += vector.getX();
+        endy += vector.getY();
     }
 
     @Override

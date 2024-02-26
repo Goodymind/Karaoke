@@ -1,4 +1,9 @@
 import javax.swing.*;
+
+import audios.KaraokeAudio;
+import scenes.SceneCanvas;
+import scenes.Test;
+
 import java.awt.*;
 import java.awt.event.*;
 

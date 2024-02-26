@@ -1,29 +1,36 @@
-import java.awt.Color;
-import java.awt.Graphics2D;
+package drawingObjects;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+
 import customData.Vector;
 
-public class Circle implements DrawingObject {
+public class Square implements DrawingObject {
 
     private double x;
     private double y;
     private double size;
     private Color color;
+    private double angle;
+    
 
-    public Circle(double x, double y, double size, Color color) {
+    public Square(double x, double y, double angle, double size, Color color) {
         this.x = x;
         this.y = y;
         this.size = size;
         this.color = color;
+        this.angle = angle;
     }
 
+    @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
-        Ellipse2D.Double e = new Ellipse2D.Double(0, 0, size, size);
-        g2d.translate(x, y);
+
+        Rectangle2D.Double rect = new Rectangle2D.Double(x, y, size, size);
         g2d.setColor(color);
-        g2d.fill(e);
+        g2d.rotate(Math.toRadians(angle), x + size / 2, y + size / 2);
+        g2d.fill(rect);
+        
         g2d.setTransform(reset);
     }
 
@@ -40,6 +47,7 @@ public class Circle implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        //none
+        angle += 90 * delta;
     }
+    
 }

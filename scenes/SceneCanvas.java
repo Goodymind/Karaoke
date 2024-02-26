@@ -1,7 +1,9 @@
+package scenes;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import customData.*;
+import drawingObjects.DrawingObject;
 
 public class SceneCanvas extends JComponent {
 
@@ -25,12 +27,20 @@ public class SceneCanvas extends JComponent {
         }
     }
 
-    protected void animateStep(float delta) {
+    /**
+     * Override to implement custom shape animations;
+     * @param delta time (in seconds) between last update
+     */
+    public void animateStep(float delta) {
         for (DrawingObject drawingObject : drawingObjects) {
             drawingObject.animateStep(delta);
         }
     }
 
+    /**
+     * Override this and put the drawingObjects to display in the scene
+     * @return
+     */
     protected ArrayList<DrawingObject> draw() {
         return drawingObjects;
     }
