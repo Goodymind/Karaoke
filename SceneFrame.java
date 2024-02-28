@@ -1,8 +1,8 @@
 import javax.swing.*;
 
-import Audios.KaraokeAudio;
+import audios.KaraokeAudio;
 import scenes.SceneCanvas;
-import scenes.Test;
+import scenes.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,7 +24,7 @@ public class SceneFrame {
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
         song_three = new JButton("Play Love - Keyshia Cole");
         stopButton = new JButton("Stop Music");
-        current_scene = new Test();
+        current_scene = new Beach();
     }
 
     public void setUpGUI() {

@@ -1,4 +1,4 @@
-package Audios;
+package audios;
 
 import java.io.File;
 import java.util.*;

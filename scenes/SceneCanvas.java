@@ -3,7 +3,6 @@ package scenes;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import customData.*;
 import drawingObjects.DrawingObject;
 
 public class SceneCanvas extends JComponent {
@@ -41,7 +40,7 @@ public class SceneCanvas extends JComponent {
 
     /**
      * Override this and put the drawingObjects to display in the scene
-     * 
+     * This is only called once
      * @return
      */
     protected ArrayList<DrawingObject> draw() {
