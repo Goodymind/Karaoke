@@ -1,4 +1,5 @@
 package scenes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class SceneCanvas extends JComponent {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Call superclass method first
+        super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh);
@@ -29,6 +30,7 @@ public class SceneCanvas extends JComponent {
 
     /**
      * Override to implement custom shape animations;
+     * 
      * @param delta time (in seconds) between last update
      */
     public void animateStep(float delta) {
@@ -39,6 +41,7 @@ public class SceneCanvas extends JComponent {
 
     /**
      * Override this and put the drawingObjects to display in the scene
+     * 
      * @return
      */
     protected ArrayList<DrawingObject> draw() {

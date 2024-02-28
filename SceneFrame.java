@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-import audios.KaraokeAudio;
+import Audios.KaraokeAudio;
 import scenes.SceneCanvas;
 import scenes.Test;
 
@@ -21,7 +21,7 @@ public class SceneFrame {
     public SceneFrame(String title, int width, int height) {
         this.title = title;
         song_one = new JButton("Play Creep(Acoustic) - Radiohead");
-        song_two = new JButton("Play Para Sa Akin - Jason Dhakal");
+        song_two = new JButton("Play My Love Mine All Mine - Mitski");
         song_three = new JButton("Play Love - Keyshia Cole");
         stopButton = new JButton("Stop Music");
         current_scene = new Test();
@@ -34,7 +34,7 @@ public class SceneFrame {
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(current_scene, BorderLayout.CENTER);
-        
+
         setUpKaraokeControls(contentPane);
 
         frame.setVisible(true);
@@ -49,7 +49,7 @@ public class SceneFrame {
         buttonPanel.add(song_three);
         buttonPanel.add(stopButton);
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
-        
+
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
