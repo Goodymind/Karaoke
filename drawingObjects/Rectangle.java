@@ -6,29 +6,28 @@ import java.awt.geom.Rectangle2D;
 
 import customData.Vector;
 
-public class Square implements DrawingObject {
+public class Rectangle implements DrawingObject {
 
     private double x;
     private double y;
-    private double size;
+    private double width;
+    private double height;
     private Color color;
-    private double angle;
 
-    public Square(double x, double y, double angle, double size, Color color) {
+    public Rectangle(double x, double y, double width, double height, Color color) {
         this.x = x;
         this.y = y;
-        this.size = size;
+        this.width = width;
+        this.height = height;
         this.color = color;
-        this.angle = angle;
     }
 
     @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
 
-        Rectangle2D.Double rect = new Rectangle2D.Double(x, y, size, size);
+        Rectangle2D.Double rect = new Rectangle2D.Double(x, y, width, height);
         g2d.setColor(color);
-        g2d.rotate(Math.toRadians(angle), x + size / 2, y + size / 2);
         g2d.fill(rect);
 
         g2d.setTransform(reset);
@@ -47,7 +46,8 @@ public class Square implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        angle += 90 * delta;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
     }
 
 }
