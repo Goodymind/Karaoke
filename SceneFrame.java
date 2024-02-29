@@ -85,7 +85,7 @@ public class SceneFrame {
         timer = new Timer(0, timerListener);
         timer.setRepeats(true);
         timer.start();
-        previousTime = System.currentTimeMillis();
+        previousTime = System.nanoTime();
     }
 
     /**

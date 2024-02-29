@@ -33,10 +33,7 @@ public class Polygon implements DrawingObject{
 
     @Override
     public void setPosition(Vector vector) {
-        for (int i = 0; i < points.size(); i++) {
-            Vector translated = points.get(i).add(vector);
-            points.set(i, translated);
-        }
+        //TODO, previous code is wrong
     }
 
     @Override

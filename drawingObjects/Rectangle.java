@@ -46,8 +46,7 @@ public class Rectangle implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
+        //none
     }
 
 }

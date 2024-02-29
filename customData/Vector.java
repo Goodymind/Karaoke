@@ -65,9 +65,27 @@ public class Vector {
         return this;
     }
 
+    public static Vector add(Vector a, Vector b) {
+        return new Vector(a.getX() + b.getX(), a.getY() + b.getY());
+    }
+
+    public Vector subtract(Vector vector) {
+        this.x += -vector.x;
+        this.y += -vector.y;
+        return this;
+    }
+
+    public static Vector subtract(Vector a, Vector b) {
+        return new Vector(a.getX() - b.getX(), a.getY() - b.getY());
+    }
+
+    public Vector multiply(double n) {
+        return new Vector(this.x * n, this.y * n);
+    }
+
     @Override
     public String toString() {
-        return String.format("(%f.5, %f.5)", x, y);
+        return String.format("(%f, %f)", x, y);
     }
 
     public Dimension toDimension() {
@@ -76,5 +94,9 @@ public class Vector {
 
     public static Dimension toDimension(Vector vector) {
         return new Dimension((int) vector.x, (int) vector.y);
+    }
+
+    public static Vector lerp(Vector a, Vector b, float i) {
+        return Vector.add(a, Vector.subtract(b, a).multiply(i));
     }
 }
