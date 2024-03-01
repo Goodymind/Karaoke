@@ -1,6 +1,7 @@
 package customData;
 
 import java.awt.Dimension;
+import java.awt.geom.Point2D;
 
 public class Vector {
 
@@ -96,6 +97,9 @@ public class Vector {
         return new Dimension((int) vector.x, (int) vector.y);
     }
 
+    public Point2D.Double toPoint2D() {
+        return new Point2D.Double(x, y);
+    }
     public static Vector lerp(Vector a, Vector b, float i) {
         return Vector.add(a, Vector.subtract(b, a).multiply(i));
     }

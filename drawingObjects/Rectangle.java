@@ -8,11 +8,11 @@ import customData.Vector;
 
 public class Rectangle implements DrawingObject {
 
-    private double x;
-    private double y;
-    private double width;
-    private double height;
-    private Color color;
+    protected double x;
+    protected double y;
+    protected double width;
+    protected double height;
+    protected Color color;
 
     public Rectangle(double x, double y, double width, double height, Color color) {
         this.x = x;
@@ -24,13 +24,9 @@ public class Rectangle implements DrawingObject {
 
     @Override
     public void draw(Graphics2D g2d) {
-        AffineTransform reset = g2d.getTransform();
-
         Rectangle2D.Double rect = new Rectangle2D.Double(x, y, width, height);
         g2d.setColor(color);
         g2d.fill(rect);
-
-        g2d.setTransform(reset);
     }
 
     @Override

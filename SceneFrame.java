@@ -20,10 +20,7 @@ public class SceneFrame {
 
     public SceneFrame(String title, int width, int height) {
         this.title = title;
-        song_one = new JButton("Play Creep(Acoustic) - Radiohead");
-        song_two = new JButton("Play My Love Mine All Mine - Mitski");
-        song_three = new JButton("Play Love - Keyshia Cole");
-        stopButton = new JButton("Stop Music");
+        
         current_scene = new Beach();
     }
 
@@ -31,14 +28,18 @@ public class SceneFrame {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        song_one = new JButton("Play Creep(Acoustic) - Radiohead");
+        song_two = new JButton("Play My Love Mine All Mine - Mitski");
+        song_three = new JButton("Play Love - Keyshia Cole");
+        stopButton = new JButton("Stop Music");
+
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(current_scene, BorderLayout.CENTER);
-
         setUpKaraokeControls(contentPane);
-
         frame.setVisible(true);
         frame.pack();
+        frame.setResizable(false);
     }
 
     private void setUpKaraokeControls(Container contentPane) {

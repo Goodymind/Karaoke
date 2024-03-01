@@ -10,9 +10,9 @@ public class KaraokeAudio {
 
     // static version of constructor
     static {
-        songs.put("Creep", "Audios\\Creep.wav");
-        songs.put("Para Sa Akin", "Audios\\Mitski - My Love Mine All Mine (Karaoke Version).wav");
-        songs.put("Love", "Audios\\Love.wav");
+        songs.put("Creep", "audios\\Creep.wav");
+        songs.put("Para Sa Akin", "audios\\Mitski - My Love Mine All Mine (Karaoke Version).wav");
+        songs.put("Love", "audios\\Love.wav");
     }
 
     public static void startAudio(String title) {
