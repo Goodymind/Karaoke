@@ -20,8 +20,7 @@ public class SceneFrame {
 
     public SceneFrame(String title, int width, int height) {
         this.title = title;
-        
-        current_scene = new Beach();
+        current_scene = new Minecraft();
     }
 
     public void setUpGUI() {
@@ -30,7 +29,7 @@ public class SceneFrame {
 
         song_one = new JButton("Play Creep(Acoustic) - Radiohead");
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
-        song_three = new JButton("Play Love - Keyshia Cole");
+        song_three = new JButton("Play Close To You(Acoustic) - The Carpenters");
         stopButton = new JButton("Stop Music");
 
         Container contentPane = frame.getContentPane();
@@ -55,13 +54,17 @@ public class SceneFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (ae.getSource() == song_one) {
+                    KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("Creep");
+
                 }
                 if (ae.getSource() == song_two) {
-                    KaraokeAudio.startAudio("Para Sa Akin");
+                    KaraokeAudio.stopAudio();
+                    KaraokeAudio.startAudio("My Love Mine All Mine");
                 }
                 if (ae.getSource() == song_three) {
-                    KaraokeAudio.startAudio("Love");
+                    KaraokeAudio.stopAudio();
+                    KaraokeAudio.startAudio("Close To You");
                 }
                 if (ae.getSource() == stopButton) {
                     KaraokeAudio.stopAudio();
