@@ -23,7 +23,7 @@ public class SceneFrame {
         this.title = title;
         this.width = width;
         this.height = height;
-        current_scene = new Minecraft();
+        current_scene = new Beach();
     }
 
     public void setUpGUI() {

@@ -37,4 +37,20 @@ public class Cloud implements DrawingObject {
         g2d.fill(c6);
 
     }
+
+    @Override
+    public void setPosition(Vector vector) {
+        x = vector.getX();
+        y = vector.getY();
+    }
+
+    @Override
+    public Vector getPosition() {
+        return new Vector(x, y);
+    }
+
+    @Override
+    public void animateStep(float delta) {
+        // none
+    }
 }

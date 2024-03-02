@@ -9,7 +9,7 @@ import customData.Vector;
 public class Beach extends SceneCanvas {
 
     private Polygon sand;
-    private Rectangle sky;
+    // private Rectangle sky;
     private Curves waves;
     private Sun sun;
 
@@ -21,11 +21,11 @@ public class Beach extends SceneCanvas {
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
         sand = initSand();
-        sky = initSky();
+        // sky = initSky();
         waves = initWaves();
         sun = new Sun(new Vector(350, 240), 100, 0);
 
-        objects.add(sky);
+        // objects.add(sky);
         objects.add(sand);
         objects.add(sun);
         objects.add(waves);
@@ -74,9 +74,9 @@ public class Beach extends SceneCanvas {
         return new Curves(points, new Color(95, 72, 255));
     }
 
-    private Rectangle initSky() {
-        return new Rectangle(0, 0, 800, 600, new Color(176, 51, 5));
-    }
+    // private Rectangle initSky() {
+    // return new Rectangle(0, 0, 800, 600, new Color(176, 51, 5));
+    // }
 
     float t = 0;
     int d = 1;
