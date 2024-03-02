@@ -11,8 +11,11 @@ public class Minecraft extends SceneCanvas {
     @Override
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
+        objects.add(
+                new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 800, -500,
+                        0, 0));
         objects.add(new Rectangle(0, 500, 800, 173, new Color(97, 74, 42)));
-        objects.add(new Sun(new Vector(700, 40), 120, 0));
+        objects.add(new Sun(new Vector(680, 0), 120, 0));
 
         // Tree
         objects.addAll(tree(700, new Color(92, 169, 4)));
@@ -20,12 +23,12 @@ public class Minecraft extends SceneCanvas {
         objects.addAll(tree(50, new Color(193, 209, 31)));
 
         // Clouds
-        objects.add(new Cloud(32, 40, 52, Color.WHITE));
-        objects.add(new Cloud(500, 70, 41, Color.WHITE));
-        objects.add(new Cloud(132, 100, 80, Color.WHITE));
-        objects.add(new Cloud(332, 50, 52, Color.WHITE));
-        objects.add(new Cloud(780, 90, 25, Color.WHITE));
-        objects.add(new Cloud(600, 30, 60, Color.WHITE));
+        objects.add(new Cloud(32, 40, 52, Color.WHITE, 10));
+        objects.add(new Cloud(500, 70, 41, Color.WHITE, 5));
+        objects.add(new Cloud(132, 100, 80, Color.WHITE, 9));
+        objects.add(new Cloud(332, 50, 52, Color.WHITE, 3));
+        objects.add(new Cloud(780, 90, 25, Color.WHITE, 15));
+        objects.add(new Cloud(600, 30, 60, Color.WHITE, 13));
 
         // Flower1
         objects.addAll(flower1(700, Color.RED));
@@ -66,7 +69,7 @@ public class Minecraft extends SceneCanvas {
 
     private ArrayList<DrawingObject> bush(double x, Color color) {
         ArrayList<DrawingObject> bushObjects = new ArrayList<DrawingObject>();
-        bushObjects.add(new Cloud(x, 468, 30, color));
+        bushObjects.add(new Cloud(x, 468, 30, color, 0));
         bushObjects.add(new Rectangle(x, 491, 30, 10, color));
         return bushObjects;
     }

@@ -46,7 +46,7 @@ public class Square implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        angle += 90 * delta;
+        // none
     }
 
 }
