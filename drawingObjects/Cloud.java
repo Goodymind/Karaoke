@@ -2,7 +2,6 @@ package drawingObjects;
 
 import java.awt.*;
 import java.awt.geom.*;
-
 import customData.Vector;
 
 public class Cloud implements DrawingObject {
@@ -11,12 +10,15 @@ public class Cloud implements DrawingObject {
     private double y;
     private double size;
     private Color color;
+    private double speed;
+    private static final int GUI_WIDTH = 800;
 
-    public Cloud(double x, double y, double size, Color color) {
+    public Cloud(double x, double y, double size, Color color, double speed) {
         this.x = x;
         this.y = y;
         this.size = size;
         this.color = color;
+        this.speed = speed;
     }
 
     @Override
@@ -35,7 +37,6 @@ public class Cloud implements DrawingObject {
         g2d.fill(c4);
         g2d.fill(c5);
         g2d.fill(c6);
-
     }
 
     @Override
@@ -51,6 +52,18 @@ public class Cloud implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // none
+        x += speed * delta;
+
+        if (x - size * .5 >= GUI_WIDTH) {
+            x = -(size * 1.70); // Set the cloud's x-coordinate to a negative value to loop back
+        }
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setX(double newX) {
+        x = newX;
     }
 }

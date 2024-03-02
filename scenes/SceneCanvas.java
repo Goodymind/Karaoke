@@ -9,12 +9,10 @@ public class SceneCanvas extends JComponent {
 
     private final Dimension size = new Dimension(800, 600);
     private ArrayList<DrawingObject> drawingObjects;
-    private GradientPaint gradient;
 
     public SceneCanvas() {
         setPreferredSize(size);
         drawingObjects = draw();
-        gradient = new GradientPaint(400, 240, Color.YELLOW, 400, 0, Color.RED);
     }
 
     @Override
@@ -22,9 +20,6 @@ public class SceneCanvas extends JComponent {
         Graphics2D g2d = (Graphics2D) g;
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHints(rh);
-
-        g2d.setPaint(gradient);
-        g2d.fillRect(0, 0, 800, 600);
 
         for (DrawingObject drawingObject : drawingObjects) {
             drawingObject.draw(g2d);
