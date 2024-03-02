@@ -11,41 +11,47 @@ public class Minecraft extends SceneCanvas {
     @Override
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
-        Sun sun = new Sun(new Vector(620, 20), 120, 0);
+        objects.add(new Rectangle(0, 500, 800, 173, new Color(97, 74, 42)));
+        objects.add(new Sun(new Vector(700, 40), 120, 0));
 
-        objects.add(new Rectangle(0, 0, 8000, 600, Color.CYAN));
-        objects.add(new Rectangle(-800, 500, 2400, 173, new Color(97, 74, 42)));
-        objects.add(sun);
+        // Tree
+        objects.addAll(tree(700, new Color(92, 169, 4)));
+        objects.addAll(tree(200, new Color(0, 97, 14)));
+        objects.addAll(tree(50, new Color(193, 209, 31)));
+
+        // Clouds
+        objects.add(new Cloud(32, 40, 52, Color.WHITE));
+        objects.add(new Cloud(500, 70, 41, Color.WHITE));
+        objects.add(new Cloud(132, 100, 80, Color.WHITE));
+        objects.add(new Cloud(332, 50, 52, Color.WHITE));
+        objects.add(new Cloud(780, 90, 25, Color.WHITE));
+        objects.add(new Cloud(600, 30, 60, Color.WHITE));
+
+        // Flower1
+        objects.addAll(flower1(700, Color.RED));
+        objects.addAll(flower1(150, Color.BLUE));
+        objects.addAll(flower1(600, Color.orange));
+
+        // Flower2
+        objects.addAll(flower2(400, new Color(65, 78, 31)));
+        objects.addAll(flower2(375, new Color(255, 91, 165)));
+        objects.addAll(flower2(250, new Color(213, 100, 124)));
+        objects.addAll(flower2(50, new Color(65, 78, 31)));
+
+        // Bush
+        objects.addAll(bush(475, new Color(66, 117, 17)));
+        objects.addAll(bush(30, new Color(150, 187, 92)));
+        objects.addAll(bush(190, Color.ORANGE));
 
         // Grass Patch
         for (int i = 0; i <= 18; i++) {
             objects.addAll(grassPatch(i * 47));
         }
 
-        // Flower(yung red)
-        objects.add(new Rectangle(83, 472, 6, 30, new Color(150, 187, 92)));
-        objects.add(new Square(70, 449, 0, 24, new Color(148, 5, 5)));
-        objects.add(new Square(80, 449, 0, 24, new Color(148, 5, 5)));
-        objects.add(new Square(75, 441, 0, 24, new Color(148, 5, 5)));
-        objects.add(new Circle(82, 457, 8, Color.BLACK));
-
-        // Tree
-        objects.add(new Rectangle(145, 420.5, 37, 80, new Color(112, 101, 61)));
-        objects.add(new Rectangle(150, 435, 5, 38, Color.DARK_GRAY));
-        objects.add(new Rectangle(170, 430, 5, 15, Color.DARK_GRAY));
-        objects.add(new Rectangle(160, 445, 7, 8, Color.DARK_GRAY));
-        objects.add(new Rectangle(170, 460, 5, 20, Color.DARK_GRAY));
-        objects.add(new Rectangle(104.5, 385, 118, 38, new Color(66, 117, 17)));
-        objects.add(new Rectangle(140, 348, 47, 38, new Color(66, 117, 17)));
-
-        // Bush
-        objects.add(new Rectangle(210, 461, 80, 40, new Color(66, 117, 17)));
-        objects.add(new Rectangle(232.5, 429, 35, 34, new Color(66, 117, 17)));
-
         return objects;
     }
 
-    private ArrayList<DrawingObject> grassPatch(int x) {
+    private ArrayList<DrawingObject> grassPatch(double x) {
         ArrayList<DrawingObject> grassObjects = new ArrayList<DrawingObject>();
 
         grassObjects.add(new Rectangle(x + 47, 500, 8, 30, new Color(150, 187, 92)));
@@ -58,4 +64,48 @@ public class Minecraft extends SceneCanvas {
         return grassObjects;
     }
 
+    private ArrayList<DrawingObject> bush(double x, Color color) {
+        ArrayList<DrawingObject> bushObjects = new ArrayList<DrawingObject>();
+        bushObjects.add(new Cloud(x, 468, 30, color));
+        bushObjects.add(new Rectangle(x, 491, 30, 10, color));
+        return bushObjects;
+    }
+
+    private ArrayList<DrawingObject> tree(double x, Color color) {
+        ArrayList<DrawingObject> treeObjects = new ArrayList<DrawingObject>();
+        treeObjects.add(new Rectangle(x - 5, 420.5, 37, 80, new Color(112, 101, 61)));
+        treeObjects.add(new Rectangle(x, 435, 5, 38, Color.DARK_GRAY));
+        treeObjects.add(new Rectangle(x + 20, 430, 5, 15, Color.DARK_GRAY));
+        treeObjects.add(new Rectangle(x + 10, 445, 7, 8, Color.DARK_GRAY));
+        treeObjects.add(new Rectangle(x + 20, 460, 5, 20, Color.DARK_GRAY));
+        treeObjects.add(new Rectangle(x - 46.5, 385, 118, 38, color));
+        treeObjects.add(new Rectangle(x - 10, 348, 47, 38, color));
+
+        return treeObjects;
+    }
+
+    private ArrayList<DrawingObject> flower1(double x, Color color) {
+        ArrayList<DrawingObject> flowerObjects = new ArrayList<DrawingObject>();
+        flowerObjects.add(new Rectangle(x + 3, 472, 6, 30, new Color(48, 105, 75)));
+        flowerObjects.add(new Square(x - 10.5, 449, 0, 24, color));
+        flowerObjects.add(new Square(x, 449, 0, 24, color));
+        flowerObjects.add(new Square(x - 5, 441, 0, 24, color));
+        flowerObjects.add(new Circle(x + 2, 457, 8, Color.BLACK));
+
+        return flowerObjects;
+    }
+
+    private ArrayList<DrawingObject> flower2(double x, Color color) {
+        ArrayList<DrawingObject> flowerObjects = new ArrayList<DrawingObject>();
+        flowerObjects.add(new Rectangle(x, 478, 5, 24, new Color(48, 105, 75)));
+        flowerObjects.add(new Rectangle(x, 481, 11, 11, new Color(48, 105, 75)));
+        flowerObjects.add(new Rectangle(x, 484, 15, 5, new Color(48, 105, 75)));
+
+        flowerObjects.add(new Rectangle(x - 5.5, 462, 16, 11, color));
+        flowerObjects.add(new Square(x - .5, 473, 0, 6, color));
+        flowerObjects.add(new Square(x - 5.5, 456, 0, 6, color));
+        flowerObjects.add(new Square(x + 4.5, 456, 0, 6, color));
+
+        return flowerObjects;
+    }
 }

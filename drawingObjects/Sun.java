@@ -66,9 +66,9 @@ public class Sun implements DrawingObject {
     @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
-        
+
         g2d.translate(position.getX(), position.getY());
-        g2d.rotate(Math.toRadians(angle), size/2, size/2);
+        g2d.rotate(Math.toRadians(angle), size / 2, size / 2);
         rings.draw(g2d);
         center.draw(g2d);
         g2d.setTransform(reset);

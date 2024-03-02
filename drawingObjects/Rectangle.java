@@ -1,7 +1,6 @@
 package drawingObjects;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
 import customData.Vector;
@@ -42,7 +41,7 @@ public class Rectangle implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        //none
+        // none
     }
 
 }

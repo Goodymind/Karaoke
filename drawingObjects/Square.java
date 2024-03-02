@@ -1,8 +1,7 @@
 package drawingObjects;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 
 import customData.Vector;
 

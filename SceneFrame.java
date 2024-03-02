@@ -1,13 +1,14 @@
 import javax.swing.*;
 
 import audios.KaraokeAudio;
-import scenes.SceneCanvas;
 import scenes.*;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class SceneFrame {
+    private int width;
+    private int height;
     private String title;
     private JFrame frame;
     private JButton song_one;
@@ -20,12 +21,15 @@ public class SceneFrame {
 
     public SceneFrame(String title, int width, int height) {
         this.title = title;
+        this.width = width;
+        this.height = height;
         current_scene = new Minecraft();
     }
 
     public void setUpGUI() {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width, height);
 
         song_one = new JButton("Play Creep(Acoustic) - Radiohead");
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
@@ -38,6 +42,7 @@ public class SceneFrame {
         setUpKaraokeControls(contentPane);
         frame.setVisible(true);
         frame.pack();
+        frame.setLocation(0, 0);
         frame.setResizable(false);
     }
 
@@ -47,8 +52,12 @@ public class SceneFrame {
         buttonPanel.add(song_one);
         buttonPanel.add(song_two);
         buttonPanel.add(song_three);
-        buttonPanel.add(stopButton);
-        contentPane.add(buttonPanel, BorderLayout.SOUTH);
+
+        JPanel stopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        stopPanel.add(stopButton);
+
+        contentPane.add(buttonPanel, BorderLayout.NORTH);
+        contentPane.add(stopPanel, BorderLayout.SOUTH);
 
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override

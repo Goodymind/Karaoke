@@ -1,8 +1,6 @@
 package scenes;
 
-import java.awt.Color;
 import java.util.ArrayList;
-
 import drawingObjects.*;
 
 public class Test extends SceneCanvas {

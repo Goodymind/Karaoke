@@ -3,11 +3,7 @@ package scenes;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import drawingObjects.Curves;
-import drawingObjects.DrawingObject;
-import drawingObjects.Polygon;
-import drawingObjects.Rectangle;
-import drawingObjects.Sun;
+import drawingObjects.*;
 import customData.Vector;
 
 public class Beach extends SceneCanvas {
@@ -88,7 +84,7 @@ public class Beach extends SceneCanvas {
     @Override
     public void animateStep(float delta) {
         sun.animateStep(delta);
-        
+
         if (t > 2)
             d = -1;
         if (t < 0)
