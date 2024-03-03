@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import audios.KaraokeAudio;
+import lyrics.LyricDisplay;
 import rain.Render;
 import scenes.*;
 
@@ -27,10 +28,6 @@ public class SceneFrame {
         this.width = width;
         this.height = height;
         //current_scene = new Beach();
-        ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
-        scenes.add(new Beach());
-        scenes.add(new Minecraft());
-        scene_switcher = new StateMachine(scenes);
     }
 
     public void setUpGUI() {
@@ -42,12 +39,18 @@ public class SceneFrame {
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
         song_three = new JButton("Play Close To You(Acoustic) - The Carpenters");
         stopButton = new JButton("Stop Music");
+        
+        ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
+        scenes.add(new Beach());
+        scenes.add(new Minecraft());
+        scene_switcher = new StateMachine(scenes);
+        LyricDisplay.label = StateMachine.label;
 
-        Render r = new Render();
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(scene_switcher, BorderLayout.CENTER);
         setUpKaraokeControls(contentPane);
+
         frame.setVisible(true);
         frame.pack();
         frame.setLocation(0, 0);
@@ -55,6 +58,8 @@ public class SceneFrame {
     }
 
     private void setUpKaraokeControls(Container contentPane) {
+        KaraokeAudio.load();
+        LyricDisplay.load();
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(song_one);
@@ -73,7 +78,7 @@ public class SceneFrame {
                 if (ae.getSource() == song_one) {
                     KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("Creep");
-
+                    LyricDisplay.start("Creep");
                 }
                 if (ae.getSource() == song_two) {
                     KaraokeAudio.stopAudio();
@@ -93,13 +98,15 @@ public class SceneFrame {
         song_three.addActionListener(karaokeButtonControlListeners);
         stopButton.addActionListener(karaokeButtonControlListeners);
     }
-
+    
     public void startAnimation() {
         ActionListener timerListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 long currentTime = System.nanoTime();
-                animateStep((currentTime - previousTime) / 1_000_000_000f);
+                float delta = (currentTime - previousTime) / 1_000_000_000f;
+                animateStep(delta);
+                LyricDisplay.step(delta);
                 previousTime = currentTime;
             }
         };

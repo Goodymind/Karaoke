@@ -16,6 +16,7 @@ public class SailBoat implements DrawingObject{
     private Curves pole;
     private Curves sail;
     private Line rope;
+    private static final int GUI_WIDTH = 800;
 
     public SailBoat(Vector position, float size, float speed) {
         this.position = position;
@@ -119,5 +120,7 @@ public class SailBoat implements DrawingObject{
     @Override
     public void animateStep(float delta) {
         position.add(Vector.RIGHT.multiply(speed * delta));
+        if (position.getX() + size> GUI_WIDTH) speed = -Math.abs(speed);
+        if (position.getX() < 0) speed = Math.abs(speed);
     }
 }
