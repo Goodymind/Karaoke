@@ -6,6 +6,7 @@ import scenes.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class SceneFrame {
     private int width;
@@ -16,7 +17,8 @@ public class SceneFrame {
     private JButton song_two;
     private JButton song_three;
     private JButton stopButton;
-    private SceneCanvas current_scene;
+    // private SceneCanvas current_scene;
+    private StateMachine scene_switcher;
     private Timer timer;
     private long previousTime;
 
@@ -24,7 +26,11 @@ public class SceneFrame {
         this.title = title;
         this.width = width;
         this.height = height;
-        current_scene = new Minecraft();
+        //current_scene = new Beach();
+        ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
+        scenes.add(new Beach());
+        scenes.add(new Minecraft());
+        scene_switcher = new StateMachine(scenes);
     }
 
     public void setUpGUI() {
@@ -40,7 +46,7 @@ public class SceneFrame {
         Render r = new Render();
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.add(current_scene, BorderLayout.CENTER);
+        contentPane.add(scene_switcher, BorderLayout.CENTER);
         setUpKaraokeControls(contentPane);
         frame.setVisible(true);
         frame.pack();
@@ -97,7 +103,7 @@ public class SceneFrame {
                 previousTime = currentTime;
             }
         };
-        timer = new Timer(0, timerListener);
+        timer = new Timer(1, timerListener);
         timer.setRepeats(true);
         timer.start();
         previousTime = System.nanoTime();
@@ -111,7 +117,7 @@ public class SceneFrame {
      */
     public void animateStep(float delta) {
         // Implement animation logic
-        current_scene.animateStep(delta);
-        current_scene.repaint();
+        scene_switcher.animateStep(delta);
+        scene_switcher.repaint();
     }
 }

@@ -56,6 +56,7 @@ public class Cloud implements DrawingObject {
 
         if (x - size * .5 >= GUI_WIDTH) {
             x = -(size * 1.70); // Set the cloud's x-coordinate to a negative value to loop back
+            //actually pretty smart, nice
         }
     }
 
