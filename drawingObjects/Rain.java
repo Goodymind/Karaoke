@@ -1,4 +1,4 @@
-package rain;
+package drawingObjects;
 
 import java.awt.*;
 import java.util.Random;

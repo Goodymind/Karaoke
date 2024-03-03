@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 
 import drawingObjects.*;
-import rain.Rain;
 import customData.Vector;
 
 public class Minecraft extends SceneCanvas {
