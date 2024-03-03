@@ -75,7 +75,7 @@ public class Beach extends SceneCanvas {
     }
 
     private RectangleBackground initSky() {
-        return new RectangleBackground(0, 0, 800, 600, new Color(255, 204, 0), new Color(255, 153, 51), 400, 240, 0, 0);
+        return new RectangleBackground(0, 0, 800, 600, Color.yellow, Color.RED, 400, 240, 400, 0);
     }
 
     float t = 0;
@@ -102,4 +102,5 @@ public class Beach extends SceneCanvas {
         }
         t += delta;
     }
+
 }

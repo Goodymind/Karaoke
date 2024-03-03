@@ -2,11 +2,14 @@ package scenes;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.awt.Graphics;
 
 import drawingObjects.*;
+import rain.Rain;
 import customData.Vector;
 
 public class Minecraft extends SceneCanvas {
+    private ArrayList<Rain> raindrops;
 
     @Override
     protected ArrayList<DrawingObject> draw() {
@@ -21,6 +24,7 @@ public class Minecraft extends SceneCanvas {
         objects.addAll(tree(700, new Color(92, 169, 4)));
         objects.addAll(tree(200, new Color(0, 97, 14)));
         objects.addAll(tree(50, new Color(193, 209, 31)));
+        raindrops = initRain();
 
         // Clouds
         objects.add(new Cloud(32, 40, 52, Color.WHITE, 10));
@@ -105,10 +109,29 @@ public class Minecraft extends SceneCanvas {
         flowerObjects.add(new Rectangle(x, 484, 15, 5, new Color(48, 105, 75)));
 
         flowerObjects.add(new Rectangle(x - 5.5, 462, 16, 11, color));
-        flowerObjects.add(new Square(x - .5, 473, 0, 6, color));
+        flowerObjects.add(new Square(x - 1.5, 470, 0, 8, color));
         flowerObjects.add(new Square(x - 5.5, 456, 0, 6, color));
         flowerObjects.add(new Square(x + 4.5, 456, 0, 6, color));
 
         return flowerObjects;
+    }
+
+    private ArrayList<Rain> initRain() {
+        ArrayList<Rain> raindrops = new ArrayList<>();
+        for (int i = 0; i < 100; i++) { // Adjust number of raindrops as needed
+            double x = Math.random() * 800; // Random x-coordinate
+            double y = 0; // Random y-coordinate
+            double velocity = Math.random() + 0.5; // Random velocity
+            raindrops.add(new Rain(x, y, velocity));
+        }
+        return raindrops;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (Rain raindrop : raindrops) {
+            raindrop.makeItRain(g); // Call makeItRain with Graphics object
+        }
     }
 }

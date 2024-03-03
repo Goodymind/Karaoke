@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import audios.KaraokeAudio;
+import rain.Render;
 import scenes.*;
 
 import java.awt.*;
@@ -23,7 +24,7 @@ public class SceneFrame {
         this.title = title;
         this.width = width;
         this.height = height;
-        current_scene = new Beach();
+        current_scene = new Minecraft();
     }
 
     public void setUpGUI() {
@@ -36,6 +37,7 @@ public class SceneFrame {
         song_three = new JButton("Play Close To You(Acoustic) - The Carpenters");
         stopButton = new JButton("Stop Music");
 
+        Render r = new Render();
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(current_scene, BorderLayout.CENTER);
