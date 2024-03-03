@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import scenes.SceneCanvas;
 
 public class StateMachine extends JPanel {
-    private final float sceneDuration = 5;
+    private final float sceneDuration = 20;
 
     private SceneCanvas currentScene;
     private ArrayList<SceneCanvas> scenes;

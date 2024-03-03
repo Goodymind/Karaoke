@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import customData.Vector;
 
-public class SailBoat implements DrawingObject{
+public class SailBoat implements DrawingObject {
 
     private Vector position;
     private float size;
@@ -21,8 +21,8 @@ public class SailBoat implements DrawingObject{
         this.position = position;
         this.size = size;
         this.speed = speed;
-        base = setupBase(); 
-        poleBase = setupPoleBase();   
+        base = setupBase();
+        poleBase = setupPoleBase();
         pole = setupPole();
         sail = setupSail();
         rope = setupRope();
@@ -30,11 +30,11 @@ public class SailBoat implements DrawingObject{
 
     private Curves setupBase() {
         ArrayList<Vector[]> basePoints = new ArrayList<Vector[]>();
-        basePoints.add(new Vector[] {new Vector(0, 0.8)});
-        basePoints.add(new Vector[] {new Vector(1, 0.8)});
-        basePoints.add(new Vector[] {new Vector(0.95, 1), new Vector(1, 0.8), new Vector(1, 0.9)});
-        basePoints.add(new Vector[] {new Vector(0.05, 1)});
-        basePoints.add(new Vector[] {new Vector(0, 0.8), new Vector(0, 0.9), new Vector(0, 0.8)});
+        basePoints.add(new Vector[] { new Vector(0, 0.8) });
+        basePoints.add(new Vector[] { new Vector(1, 0.8) });
+        basePoints.add(new Vector[] { new Vector(0.95, 1), new Vector(1, 0.8), new Vector(1, 0.9) });
+        basePoints.add(new Vector[] { new Vector(0.05, 1) });
+        basePoints.add(new Vector[] { new Vector(0, 0.8), new Vector(0, 0.9), new Vector(0, 0.8) });
         for (int i = 0; i < basePoints.size(); i++) {
             var points = basePoints.get(i);
             for (int j = 0; j < points.length; j++) {
@@ -46,9 +46,9 @@ public class SailBoat implements DrawingObject{
 
     private Curves setupPoleBase() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
-        points.add(new Vector[] {new Vector(0.2, 0.8)});
-        points.add(new Vector[] {new Vector(0.5, 0.7), new Vector(0.2, 0.8), new Vector(0.4, 0.7)});
-        points.add(new Vector[] {new Vector(0.8, 0.8), new Vector(0.6, 0.7), new Vector(0.8, 0.8)});
+        points.add(new Vector[] { new Vector(0.2, 0.8) });
+        points.add(new Vector[] { new Vector(0.5, 0.7), new Vector(0.2, 0.8), new Vector(0.4, 0.7) });
+        points.add(new Vector[] { new Vector(0.8, 0.8), new Vector(0.6, 0.7), new Vector(0.8, 0.8) });
         for (int i = 0; i < points.size(); i++) {
             var pts = points.get(i);
             for (int j = 0; j < pts.length; j++) {
@@ -60,10 +60,10 @@ public class SailBoat implements DrawingObject{
 
     private Curves setupPole() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
-        points.add(new Vector[] {new Vector(0.5, 0.1)});
-        points.add(new Vector[] {new Vector(0.5, 0.8)});
-        points.add(new Vector[] {new Vector(0.4, 0.2), new Vector(0.5, 0.8), new Vector(0.4, 0.3)});
-        points.add(new Vector[] {new Vector(0.5, 0.1), new Vector(0.4, 0.1), new Vector(0.5, 0.1)});
+        points.add(new Vector[] { new Vector(0.5, 0.1) });
+        points.add(new Vector[] { new Vector(0.5, 0.8) });
+        points.add(new Vector[] { new Vector(0.4, 0.2), new Vector(0.5, 0.8), new Vector(0.4, 0.3) });
+        points.add(new Vector[] { new Vector(0.5, 0.1), new Vector(0.4, 0.1), new Vector(0.5, 0.1) });
         for (int i = 0; i < points.size(); i++) {
             var pts = points.get(i);
             for (int j = 0; j < pts.length; j++) {
@@ -72,12 +72,12 @@ public class SailBoat implements DrawingObject{
         }
         return new Curves(points, new Color(82, 46, 0));
     }
-    
+
     private Curves setupSail() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
-        points.add(new Vector[] {new Vector(0.5, 0.1)});
-        points.add(new Vector[] {new Vector(0.9, 0.7), new Vector(0.5, 0.1), new Vector(0.9, 0.6)});
-        points.add(new Vector[] {new Vector(0.5, 0.7), new Vector(0.9, 0.8), new Vector(0.5, 0.7)});
+        points.add(new Vector[] { new Vector(0.5, 0.1) });
+        points.add(new Vector[] { new Vector(0.9, 0.7), new Vector(0.5, 0.1), new Vector(0.9, 0.6) });
+        points.add(new Vector[] { new Vector(0.5, 0.7), new Vector(0.9, 0.8), new Vector(0.5, 0.7) });
         for (int i = 0; i < points.size(); i++) {
             var pts = points.get(i);
             for (int j = 0; j < pts.length; j++) {
@@ -119,5 +119,7 @@ public class SailBoat implements DrawingObject{
     @Override
     public void animateStep(float delta) {
         position.add(Vector.RIGHT.multiply(speed * delta));
+        if (position.getX() > 800)
+            position.setX(-size);
     }
 }

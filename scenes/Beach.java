@@ -2,7 +2,6 @@ package scenes;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import drawingObjects.*;
 import customData.Vector;
@@ -16,6 +15,7 @@ public class Beach extends SceneCanvas {
     private Cloud cloud;
     private Cloud cloud2;
     private Cloud cloud3;
+    private Cloud cloud4;
     private SailBoat boat;
     private SailBoat boat2;
     private SailBoat boat3;
@@ -31,18 +31,20 @@ public class Beach extends SceneCanvas {
         sky = initSky();
         waves = initWaves();
         sun = new Sun(new Vector(350, 240), 100, 0);
-        cloud = new Cloud(30, 30, 70, new Color(157, 157, 157, 250), 3);
-        cloud2 = new Cloud(130, 30, 60, new Color(157, 157, 157, 250), 2);
-        cloud3 = new Cloud(600, 20, 90, new Color(157, 157, 157, 250), 1);
+        cloud = new Cloud(30, 30, 70, new Color(80, 0, 80), 30);
+        cloud2 = new Cloud(130, 30, 60, new Color(255, 215, 0), 20);
+        cloud3 = new Cloud(600, 20, 85, new Color(255, 218, 185), 40);
+        cloud4 = new Cloud(400, 40, 50, new Color(30, 40, 120), 20);
         boat = new SailBoat(new Vector(200, 275), 30, 3);
-        boat2 = new SailBoat(new Vector(700, 267), 40, 1);
-        boat3 = new SailBoat(new Vector(-20, 215), 100, 10);
+        boat2 = new SailBoat(new Vector(700, 267), 40, 10);
+        boat3 = new SailBoat(new Vector(-20, 215), 100, 100);
         objects.add(sky);
         objects.add(sand);
         objects.add(sun);
         objects.add(cloud);
         objects.add(cloud2);
         objects.add(cloud3);
+        objects.add(cloud4);
         objects.add(waves);
         objects.add(boat);
         objects.add(boat2);
@@ -97,13 +99,15 @@ public class Beach extends SceneCanvas {
     }
 
     float t = 0;
-    int d = 1;    
+    int d = 1;
+
     @Override
     public void animateStep(float delta) {
         sun.animateStep(delta);
         cloud.animateStep(delta);
         cloud2.animateStep(delta);
         cloud3.animateStep(delta);
+        cloud4.animateStep(delta);
         boat.animateStep(delta);
         boat2.animateStep(delta);
         boat3.animateStep(delta);
