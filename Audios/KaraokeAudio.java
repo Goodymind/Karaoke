@@ -6,38 +6,44 @@ import javax.sound.sampled.*;
 
 public class KaraokeAudio {
     private static Map<String, String> songs = new HashMap<String, String>();
-    private static Clip clip;
+    private static Map<String, Clip> clips = new HashMap<String, Clip>();
+    private static Clip current_clip;
 
     // static version of constructor
-    static {
+    public static void load() {
         songs.put("Creep", "audios\\Creep.wav");
         songs.put("My Love Mine All Mine", "audios\\Mitski - My Love Mine All Mine (Karaoke Version).wav");
         songs.put("Close To You", "audios\\CloseToYou.wav");
         songs.put("If I Am With You", "audios\\IfIAmWithYou.wav");
     }
 
-    public static void startAudio(String title) {
+    private static void loadSong(String title) {
         String filePath = songs.get(title);
+        Clip clip = null;
         try {
             File audioFile = new File(filePath);
-            if (audioFile.exists()) {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-                System.out.println(audioStream);
-                clip = AudioSystem.getClip();
-                clip.open(audioStream);
-                clip.start();
-            } else {
-                System.out.println("File not found: " + filePath);
-            }
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            clip = AudioSystem.getClip();
+            clip.open(audioStream);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        clips.put(title, clip);
+    }
+
+    public static void startAudio(String title) {
+        System.out.printf("Playing... %s\n", title);
+        current_clip = clips.get(title);
+        if (current_clip.isRunning()) {
+            current_clip.stop();
+        }
+        current_clip.setFramePosition(0);
+        current_clip.start();
     }
 
     public static void stopAudio() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-            clip.close();
+        if (current_clip != null && current_clip.isRunning()) {
+            current_clip.stop();
         }
     }
 }

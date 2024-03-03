@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import audios.KaraokeAudio;
+import lyrics.LyricDisplay;
 import scenes.*;
 
 import java.awt.*;
@@ -47,6 +48,7 @@ public class SceneFrame {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(scene_switcher, BorderLayout.CENTER);
         setUpKaraokeControls(contentPane);
+
         frame.setVisible(true);
         frame.pack();
         frame.setLocation(0, 0);
@@ -54,6 +56,8 @@ public class SceneFrame {
     }
 
     private void setUpKaraokeControls(Container contentPane) {
+        KaraokeAudio.load();
+        LyricDisplay.load();
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(song_one);
@@ -72,7 +76,7 @@ public class SceneFrame {
                 if (ae.getSource() == song_one) {
                     KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("Creep");
-
+                    LyricDisplay.start("Creep");
                 }
                 if (ae.getSource() == song_two) {
                     KaraokeAudio.stopAudio();
@@ -98,7 +102,9 @@ public class SceneFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 long currentTime = System.nanoTime();
-                animateStep((currentTime - previousTime) / 1_000_000_000f);
+                float delta = (currentTime - previousTime) / 1_000_000_000f;
+                animateStep(delta);
+                LyricDisplay.step(delta);
                 previousTime = currentTime;
             }
         };
