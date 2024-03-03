@@ -15,6 +15,9 @@ public class KaraokeAudio {
         songs.put("My Love Mine All Mine", "audios\\Mitski - My Love Mine All Mine (Karaoke Version).wav");
         songs.put("Close To You", "audios\\CloseToYou.wav");
         songs.put("If I Am With You", "audios\\IfIAmWithYou.wav");
+        for (String title : songs.keySet()) {
+            loadSong(title);
+        }
     }
 
     private static void loadSong(String title) {

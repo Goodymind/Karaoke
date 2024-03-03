@@ -26,11 +26,7 @@ public class SceneFrame {
         this.title = title;
         this.width = width;
         this.height = height;
-        // current_scene = new Beach();
-        ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
-        scenes.add(new Beach());
-        scenes.add(new Minecraft());
-        scene_switcher = new StateMachine(scenes);
+        
     }
 
     public void setUpGUI() {
@@ -42,8 +38,14 @@ public class SceneFrame {
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
         song_three = new JButton("Play Close To You(Acoustic) - The Carpenters");
         stopButton = new JButton("Stop Music");
-        KaraokeAudio.startAudio("If I Am With You");
 
+        ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
+        scenes.add(new Beach());
+        scenes.add(new Minecraft());
+        scene_switcher = new StateMachine(scenes);
+
+        LyricDisplay.label = StateMachine.label;
+        
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(scene_switcher, BorderLayout.CENTER);

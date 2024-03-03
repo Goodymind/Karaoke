@@ -1,8 +1,8 @@
 package lyrics;
 
+import java.awt.Font;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -17,7 +17,6 @@ public class LyricDisplay {
     public static JLabel label;
     private static float totalTime;
     private static boolean songStarted = false;
-    private static String currentSong;
     private static int currentLine;
     
     public static void load() {
@@ -43,10 +42,10 @@ public class LyricDisplay {
         }
     }
     public static void start(String title) {
-        currentSong = title;
         songStarted = true;
         totalTime = 0;
         currentLine = -1;
+        label.setFont(new Font("Sans Serif", Font.ITALIC, 48));
         label.setText(title);
     }
 
@@ -54,6 +53,7 @@ public class LyricDisplay {
         if (!songStarted) return;
         int nextTime = times.get(currentLine + 1);
         if (totalTime > nextTime) {
+            label.setFont(new Font("Sans Serif", Font.BOLD, 48));
             currentLine++;
             label.setText(lines.get(currentLine));
         }

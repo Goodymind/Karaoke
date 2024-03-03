@@ -6,7 +6,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import scenes.SceneCanvas;
 
-public class StateMachine extends JPanel {
+public class StateMachine extends JLayeredPane {
     private final float sceneDuration = 20;
 
     private SceneCanvas currentScene;
@@ -23,7 +23,7 @@ public class StateMachine extends JPanel {
         currentScene = scenes.get(currentSceneIndex);
 
         label = new JLabel("");
-        label.setFont(new Font("Sans Serif", Font.BOLD, 28));
+        label.setFont(new Font("Sans Serif", Font.BOLD, 48));
         label.setForeground(Color.WHITE);
 
         textPanel = new JPanel();
