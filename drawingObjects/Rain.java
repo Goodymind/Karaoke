@@ -29,7 +29,7 @@ public class Rain {
 
         if (y > 497) {
             x = rd.nextInt(800);
-            y = 0;
+            y = -5;
             velocity = rd.nextDouble() + 0.5;
         }
     }

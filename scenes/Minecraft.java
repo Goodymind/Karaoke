@@ -28,14 +28,14 @@ public class Minecraft extends SceneCanvas {
 
         // Clouds
         objects.add(new Cloud(32, 40, 52, Color.WHITE, 10));
-        objects.add(new Cloud(500, 70, 41, Color.WHITE, 5));
+        objects.add(new Cloud(500, 70, 41, Color.WHITE, 25));
         objects.add(new Cloud(132, 100, 80, Color.WHITE, 9));
-        objects.add(new Cloud(332, 50, 52, Color.WHITE, 3));
-        objects.add(new Cloud(780, 90, 25, Color.WHITE, 15));
-        objects.add(new Cloud(600, 30, 60, Color.WHITE, 13));
-        objects.add(new Cloud(200, 0, 60, Color.WHITE, 8));
-        objects.add(new Cloud(50, 4, 60, Color.WHITE, 2));
-        objects.add(new Cloud(0, 7, 60, Color.WHITE, 3));
+        objects.add(new Cloud(332, 50, 52, new Color(176, 196, 222), 3));
+        objects.add(new Cloud(780, 90, 25, new Color(112, 128, 144), 15));
+        objects.add(new Cloud(600, 30, 60, new Color(128, 144, 160), 13));
+        objects.add(new Cloud(200, 17, 60, new Color(128, 144, 160), 8));
+        objects.add(new Cloud(700, 20, 60, new Color(196, 195, 208), 15));
+        objects.add(new Cloud(40, 20, 60, new Color(112, 128, 144), 99));
 
         // Flower1
         objects.addAll(flower1(700, Color.RED));
@@ -121,10 +121,10 @@ public class Minecraft extends SceneCanvas {
 
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) { // Adjust number of raindrops as needed
+        for (int i = 0; i < 200; i++) { // Adjust number of raindrops as needed
             double x = Math.random() * 800; // Random x-coordinate
-            double y = 0; // Random y-coordinate
-            double velocity = Math.random() + 0.5; // Random velocity
+            double y = 0;
+            double velocity = Math.random() + 60; // Random velocity
             raindrops.add(new Rain(x, y, velocity));
         }
         return raindrops;
@@ -134,7 +134,7 @@ public class Minecraft extends SceneCanvas {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for (Rain raindrop : raindrops) {
-            raindrop.makeItRain(g); // Call makeItRain with Graphics object
+            raindrop.makeItRain(g);
         }
     }
 }
