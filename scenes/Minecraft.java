@@ -26,15 +26,14 @@ public class Minecraft extends SceneCanvas {
         objects.addAll(tree(50, new Color(193, 209, 31)));
 
         // Clouds
-        objects.add(new Cloud(32, 40, 52, Color.WHITE, 10));
-        objects.add(new Cloud(500, 70, 41, Color.WHITE, 25));
-        objects.add(new Cloud(132, 100, 80, Color.WHITE, 9));
-        objects.add(new Cloud(332, 50, 52, new Color(176, 196, 222), 3));
-        objects.add(new Cloud(780, 90, 25, new Color(112, 128, 144), 15));
+        objects.add(new Cloud(32, 20, 52, Color.WHITE, 10));
+        objects.add(new Cloud(190, 70, 41, new Color(255, 253, 208), 12));
+        objects.add(new Cloud(750, 90, 80, Color.lightGray, 9));
+        objects.add(new Cloud(332, 50, 52, new Color(93, 173, 222), 9));
+        objects.add(new Cloud(500, 90, 25, new Color(255, 219, 88), 15));
         objects.add(new Cloud(600, 30, 60, new Color(128, 144, 160), 13));
-        objects.add(new Cloud(200, 17, 60, new Color(128, 144, 160), 8));
-        objects.add(new Cloud(700, 20, 60, new Color(196, 195, 208), 15));
-        objects.add(new Cloud(40, 20, 60, new Color(112, 128, 144), 99));
+        objects.add(new Cloud(300, 100, 60, new Color(255, 218, 185), 8));
+        objects.add(new Cloud(700, 20, 60, new Color(251, 206, 177), 15));
 
         // Flower1
         objects.addAll(flower1(700, Color.RED));
@@ -42,10 +41,10 @@ public class Minecraft extends SceneCanvas {
         objects.addAll(flower1(600, Color.orange));
 
         // Flower2
-        objects.addAll(flower2(400, new Color(65, 78, 31)));
-        objects.addAll(flower2(375, new Color(255, 91, 165)));
-        objects.addAll(flower2(250, new Color(213, 100, 124)));
-        objects.addAll(flower2(50, new Color(65, 78, 31)));
+        objects.addAll(flower2(400, new Color(148, 0, 211)));
+        objects.addAll(flower2(375, new Color(0, 191, 255)));
+        objects.addAll(flower2(250, new Color(220, 20, 60)));
+        objects.addAll(flower2(780, new Color(65, 78, 31)));
 
         // Bush
         objects.addAll(bush(475, new Color(66, 117, 17)));
@@ -120,7 +119,7 @@ public class Minecraft extends SceneCanvas {
 
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
-        for (int i = 0; i < 200; i++) { // Adjust number of raindrops as needed
+        for (int i = 0; i < 69; i++) { // Adjust number of raindrops as needed
             double x = Math.random() * 800; // Random x-coordinate
             double y = 0;
             double velocity = Math.random() + 60; // Random velocity

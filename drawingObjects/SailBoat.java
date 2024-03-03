@@ -16,12 +16,14 @@ public class SailBoat implements DrawingObject {
     private Curves pole;
     private Curves sail;
     private Line rope;
+    private Color color;
     private static final int GUI_WIDTH = 800;
 
-    public SailBoat(Vector position, float size, float speed) {
+    public SailBoat(Vector position, float size, float speed, Color color) {
         this.position = position;
         this.size = size;
         this.speed = speed;
+        this.color = color;
         base = setupBase();
         poleBase = setupPoleBase();
         pole = setupPole();
@@ -42,7 +44,7 @@ public class SailBoat implements DrawingObject {
                 points[j] = points[j].multiply(size);
             }
         }
-        return new Curves(basePoints, new Color(40, 84, 8));
+        return new Curves(basePoints, new Color(139, 69, 19));
     }
 
     private Curves setupPoleBase() {
@@ -56,7 +58,7 @@ public class SailBoat implements DrawingObject {
                 pts[j] = pts[j].multiply(size);
             }
         }
-        return new Curves(points, new Color(7, 185, 0));
+        return new Curves(points, color);
     }
 
     private Curves setupPole() {
@@ -71,7 +73,7 @@ public class SailBoat implements DrawingObject {
                 pts[j] = pts[j].multiply(size);
             }
         }
-        return new Curves(points, new Color(82, 46, 0));
+        return new Curves(points, new Color(160, 82, 45));
     }
 
     private Curves setupSail() {
@@ -85,13 +87,13 @@ public class SailBoat implements DrawingObject {
                 pts[j] = pts[j].multiply(size);
             }
         }
-        return new Curves(points, new Color(255, 227, 218));
+        return new Curves(points, new Color(255, 218, 185));
     }
 
     private Line setupRope() {
         Vector start = new Vector(0.5, 0.1).multiply(size);
         Vector end = new Vector(0, 0.8).multiply(size);
-        return new Line(start.getX(), start.getY(), end.getX(), end.getY(), 1, Color.BLACK);
+        return new Line(start.getX(), start.getY(), end.getX(), end.getY(), 1, new Color(104, 82, 63));
     }
 
     @Override

@@ -8,6 +8,7 @@ public class KaraokeAudio {
     private static Map<String, String> songs = new HashMap<String, String>();
     private static Map<String, Clip> clips = new HashMap<String, Clip>();
     private static Clip current_clip;
+    private static boolean audioStopped = false;
 
     // static version of constructor
     public static void load() {
@@ -28,6 +29,18 @@ public class KaraokeAudio {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
+
+            // Add a LineListener to the clip
+            clip.addLineListener(new LineListener() {
+                @Override
+                public void update(LineEvent event) {
+                    if (event.getType() == LineEvent.Type.STOP && !audioStopped) {
+
+                        current_clip.setFramePosition(0);
+                        current_clip.start();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,11 +55,13 @@ public class KaraokeAudio {
         }
         current_clip.setFramePosition(0);
         current_clip.start();
+        audioStopped = false;
     }
 
     public static void stopAudio() {
         if (current_clip != null && current_clip.isRunning()) {
             current_clip.stop();
+            audioStopped = true;
         }
     }
 }

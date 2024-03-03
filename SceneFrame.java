@@ -26,7 +26,7 @@ public class SceneFrame {
         this.title = title;
         this.width = width;
         this.height = height;
-        
+
     }
 
     public void setUpGUI() {
@@ -45,7 +45,7 @@ public class SceneFrame {
         scene_switcher = new StateMachine(scenes);
 
         LyricDisplay.label = StateMachine.label;
-        
+
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.add(scene_switcher, BorderLayout.CENTER);
@@ -71,6 +71,7 @@ public class SceneFrame {
 
         contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(stopPanel, BorderLayout.SOUTH);
+        KaraokeAudio.startAudio("If I Am With You");
 
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override
