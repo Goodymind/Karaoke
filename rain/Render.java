@@ -11,17 +11,18 @@ public class Render extends JPanel {
     Random rd;
 
     public Render() {
-        n = 100;
+        n = 1;
         rain = new Rain[n];
         rd = new Random();
 
         for (int i = 0; i < rain.length; i++)
-            rain[i] = new Rain(rd.nextInt(800), 0, rd.nextDouble()+0.5); 
+            rain[i] = new Rain(rd.nextInt(800), 20, rd.nextDouble() + 0.5);
     }
 
-    public void paintComponent(Graphics g) { 
-        super.paintComponent(g); 
-        for (int i = 0; i < rain.length; i++) rain[i].makeItRain(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (int i = 0; i < rain.length; i++)
+            rain[i].makeItRain(g);
         repaint();
     }
 }

@@ -14,17 +14,17 @@ public class Minecraft extends SceneCanvas {
     @Override
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
+        raindrops = initRain();
         objects.add(
                 new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 800, -500,
                         0, 0));
-        objects.add(new Rectangle(0, 500, 800, 173, new Color(97, 74, 42)));
+        objects.add(new Rectangle(0, 501, 800, 173, new Color(97, 74, 42)));
         objects.add(new Sun(new Vector(680, 0), 120, 0));
 
         // Tree
         objects.addAll(tree(700, new Color(92, 169, 4)));
         objects.addAll(tree(200, new Color(0, 97, 14)));
         objects.addAll(tree(50, new Color(193, 209, 31)));
-        raindrops = initRain();
 
         // Clouds
         objects.add(new Cloud(32, 40, 52, Color.WHITE, 10));
@@ -33,6 +33,9 @@ public class Minecraft extends SceneCanvas {
         objects.add(new Cloud(332, 50, 52, Color.WHITE, 3));
         objects.add(new Cloud(780, 90, 25, Color.WHITE, 15));
         objects.add(new Cloud(600, 30, 60, Color.WHITE, 13));
+        objects.add(new Cloud(200, 0, 60, Color.WHITE, 8));
+        objects.add(new Cloud(50, 4, 60, Color.WHITE, 2));
+        objects.add(new Cloud(0, 7, 60, Color.WHITE, 3));
 
         // Flower1
         objects.addAll(flower1(700, Color.RED));
@@ -118,7 +121,7 @@ public class Minecraft extends SceneCanvas {
 
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
-        for (int i = 0; i < 100; i++) { // Adjust number of raindrops as needed
+        for (int i = 0; i < 1000; i++) { // Adjust number of raindrops as needed
             double x = Math.random() * 800; // Random x-coordinate
             double y = 0; // Random y-coordinate
             double velocity = Math.random() + 0.5; // Random velocity

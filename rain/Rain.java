@@ -19,13 +19,15 @@ public class Rain {
 
     public void makeItRain(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHints(rh);
 
-        g2d.setColor(new Color(119, 136, 153));
+        g2d.setColor(Color.BLUE);
         g2d.fillRect((int) x, (int) y, 2, 5);
 
         y += velocity;
 
-        if (y > 605) {
+        if (y > 497) {
             x = rd.nextInt(800);
             y = 0;
             velocity = rd.nextDouble() + 0.5;
