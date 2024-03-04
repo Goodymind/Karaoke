@@ -37,7 +37,7 @@ public class Beach extends SceneCanvas {
         cloud4 = new Cloud(400, 40, 50, new Color(30, 40, 120), 20);
         boat = new SailBoat(new Vector(200, 275), 30, 3);
         boat2 = new SailBoat(new Vector(700, 267), 40, 10);
-        boat3 = new SailBoat(new Vector(-20, 215), 100, 100);
+        boat3 = new SailBoat(new Vector(-20, 215), 100, 16);
         objects.add(sky);
         objects.add(sand);
         objects.add(sun);
