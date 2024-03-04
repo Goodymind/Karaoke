@@ -120,7 +120,7 @@ public class Minecraft extends SceneCanvas {
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
         for (int i = 0; i < 69; i++) { // Adjust number of raindrops as needed
-            double x = Math.random() * 800; // Random x-coordinate
+            double x = Math.random() * 800;
             double y = 0;
             double velocity = Math.random() + 60; // Random velocity
             raindrops.add(new Rain(x, y, velocity));

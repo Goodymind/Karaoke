@@ -1,27 +1,38 @@
-23, When you were here before
-28, Couldn't look you in the eye
-34, You're just like an angel
-39, Your skin makes me cry
-45, You float like a feather
-50, In a beautiful world
-56, I wish I was special
-61, You're so very special
-67, But I'm a creep
-72, I'm a weirdo
-77, What the hell am I doin' here?
-83,I don't belong here
-87,I don't care if it hurts
-96,I wanna have control
-100,I want a perfect body
-106,I want a perfect soul
-111,I want you to notice
-117,When I'm not around
-123,So fuckin' special
-128,I wish I was special
-133,But I'm a creep
-139,I'm a weirdo
-144,What the hell am I doin' here?
-149,I don't belong here
-157,She's running out the door (run)
-170,She's running out
-180,She run, run, run, run
+23: When you were here before
+28: Couldn't look you in the eye
+34: You're just like an angel
+39: Your skin makes me cry
+45: You float like a feather
+50: In a beautiful world
+56: I wish I was special
+61: You're so very special
+67: But I'm a creep
+72: I'm a weirdo
+77: What the hell am I doin' here?
+83: I don't belong here
+89: I don't care if it hurts
+95: I wanna have control
+100: I want a perfect body
+106: I want a perfect soul
+111: I want you to notice
+117: When I'm not around
+122: So very special
+128: I wish I was special
+133: But I'm a creep
+139: I'm a weirdo
+144: What the hell am I doin' here?
+150: I don't belong here
+154: Oh-oh oh-oh
+157: She's running out the door (run)
+168: She's running out
+173: She run run run run
+190: RUN
+199: Whatever makes you happy
+204: Whatever you want
+210: You're so very special
+216: I wish I was special
+221: But I'm a creep,
+226: I'm a weirdo
+232: What the hell am I doing here?
+238: I don't belong here
+240: I don't belong here

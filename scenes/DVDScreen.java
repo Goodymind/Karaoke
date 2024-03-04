@@ -9,25 +9,27 @@ import java.util.Random;
 import customData.Vector;
 import drawingObjects.DVD;
 import drawingObjects.DrawingObject;
-import drawingObjects.Rectangle;
+import drawingObjects.RectangleBackground;
 
 public class DVDScreen extends SceneCanvas {
 
     private DVD dvd;
-    private Rectangle bg;
+    private RectangleBackground bg;
     private Random rng;
+
     @Override
     protected ArrayList<DrawingObject> draw() {
         rng = new Random();
-        dvd = new DVD(new Vector(100, 100), 200f, Color.RED);
-        bg = new Rectangle(0, 0, 800, 600, Color.BLACK);
+        dvd = new DVD(new Vector(0, 0), 200f, Color.RED);
+        bg = new RectangleBackground(0, 0, 800, 600, Color.WHITE, new Color(140, 190, 214), 400, 1500, 400,
+                -300);
         MouseListener listener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 var mousePos = Vector.pointToVector(e.getPoint());
                 Vector newVelocity = Vector.subtract(dvd.getPosition(), mousePos);
                 dvd.setVelocity(newVelocity);
-                dvd.setColor(new Color(rng.nextInt(30, 255), rng.nextInt(30, 255), rng.nextInt(30, 255)));
+                dvd.setColor(new Color(rng.nextInt(0, 255), rng.nextInt(0, 255), rng.nextInt(0, 255)));
             }
 
             @Override
