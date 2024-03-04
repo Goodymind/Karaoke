@@ -23,12 +23,12 @@ public class StateMachine extends JLayeredPane {
         currentScene = scenes.get(currentSceneIndex);
 
         label = new JLabel("");
-        label.setFont(new Font("Sans Serif", Font.BOLD, 48));
+        label.setFont(new Font("Times New Roman", Font.BOLD, 48));
         label.setForeground(Color.WHITE);
 
         textPanel = new JPanel();
         textPanel.setBackground(new Color(255, 255, 255, 0));
-        textPanel.setBounds(0, 400, 800, 200);
+        textPanel.setBounds(0, 150, 800, 200);
         textPanel.add(label);
         setLayer(textPanel, 1);
 
