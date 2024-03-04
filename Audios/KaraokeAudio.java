@@ -59,7 +59,8 @@ public class KaraokeAudio {
 
     public static void stopAudio() {
         if (current_clip != null && current_clip.isRunning()) {
-            current_clip.stop();
+            while (current_clip.isRunning())
+                current_clip.stop();
             audioStopped = true;
         }
     }
