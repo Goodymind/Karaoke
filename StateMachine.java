@@ -28,7 +28,7 @@ public class StateMachine extends JLayeredPane {
 
         textPanel = new JPanel();
         textPanel.setBackground(new Color(255, 255, 255, 0));
-        textPanel.setBounds(0, 400, 800, 200);
+        textPanel.setBounds(0, 150, 800, 200);
         textPanel.add(label);
         setLayer(textPanel, 1);
 
