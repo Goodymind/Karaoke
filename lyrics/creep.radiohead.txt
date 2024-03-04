@@ -1,27 +1,27 @@
 23, When you were here before
 28, Couldn't look you in the eye
 34, You're just like an angel
-39,Your skin makes me cry
-44,You float like a feather
-49,In a beautiful world
-55,I wish I was special
+39, Your skin makes me cry
+45, You float like a feather
+50, In a beautiful world
+56,I wish I was special
 61,You're so very special
-67,But I'm a creep
-72,I'm a weirdo
-77,What the hell am I doin' here?
-83,I don't belong here
-89,I don't care if it hurts
-94,I wanna have control
+66,But I'm a creep
+72, I'm a weirdo
+77, What the hell am I doin' here?
+82, I don't belong here
+87, I don't care if it hurts
+95,I wanna have control
 100,I want a perfect body
-105,I want a perfect soul
+106,I want a perfect soul
 111,I want you to notice
-116,When I'm not around
-122,So fuckin' special
-127,I wish I was special
+117,When I'm not around
+123,So fuckin' special
+128,I wish I was special
 133,But I'm a creep
 139,I'm a weirdo
 144,What the hell am I doin' here?
-130,I don't belong here
+149,I don't belong here
 157,She's running out the door (run)
-160,She's running out
-167,She run, run, run, run
+170,She's running out
+180,She run, run, run, run
