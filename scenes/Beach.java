@@ -30,7 +30,7 @@ public class Beach extends SceneCanvas {
         sand = initSand();
         sky = initSky();
         waves = initWaves();
-        sun = new Sun(new Vector(350, 240), 100, 0);
+        sun = new Sun(new Vector(325, 235), 150, 0);
         cloud = new Cloud(30, 30, 70, new Color(244, 194, 194), 10);
         cloud2 = new Cloud(130, 30, 60, new Color(223, 160, 160), 10);
         cloud3 = new Cloud(600, 20, 85, new Color(255, 188, 217), 15);

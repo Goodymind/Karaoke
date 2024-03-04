@@ -1,4 +1,5 @@
 package drawingObjects;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -49,7 +50,6 @@ public class Line implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // TODO Auto-generated method stub
+        // none
     }
-
 }
