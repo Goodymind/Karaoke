@@ -40,7 +40,7 @@ public class SceneFrame {
         stopButton = new JButton("Stop Music");
 
         ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
-        //scenes.add(new DVDScreen());
+        scenes.add(new DVDScreen());
         scenes.add(new Minecraft());
         scenes.add(new Beach());
         scene_switcher = new StateMachine(scenes);
@@ -72,7 +72,7 @@ public class SceneFrame {
 
         contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(stopPanel, BorderLayout.SOUTH);
-        KaraokeAudio.startAudio("If I Am With You");
+        //KaraokeAudio.startAudio("If I Am With You");
 
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override

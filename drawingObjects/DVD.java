@@ -10,6 +10,7 @@ import customData.Vector;
 public class DVD implements DrawingObject {
 
     private Vector position;
+    private Vector velocity;
     private float size;
     private Color color;
     Curves dvd;
@@ -19,6 +20,7 @@ public class DVD implements DrawingObject {
         this.size = size;
         this.color = color;
         dvd = initDVD();
+        velocity = Vector.RIGHT.multiply(10);
     }
 
     private Curves initDVD() {
@@ -85,8 +87,7 @@ public class DVD implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'animateStep'");
+        position.add(velocity.multiply(delta));
     }
     
 }
