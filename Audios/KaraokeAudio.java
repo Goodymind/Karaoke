@@ -48,7 +48,6 @@ public class KaraokeAudio {
     }
 
     public static void startAudio(String title) {
-        System.out.printf("Playing... %s\n", title);
         current_clip = clips.get(title);
         if (current_clip.isRunning()) {
             current_clip.stop();

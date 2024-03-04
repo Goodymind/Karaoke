@@ -9,6 +9,8 @@ import customData.Vector;
 
 public class DVD implements DrawingObject {
 
+    private static final int GUI_WIDTH = 800;
+    private static final int GUI_HEIGHT = 600;
     private Vector position;
     private Vector velocity;
     private float size;
@@ -20,7 +22,7 @@ public class DVD implements DrawingObject {
         this.size = size;
         this.color = color;
         dvd = initDVD();
-        velocity = Vector.RIGHT.multiply(10);
+        velocity = Vector.RIGHT.multiply(40);
     }
 
     private Curves initDVD() {
@@ -88,6 +90,23 @@ public class DVD implements DrawingObject {
     @Override
     public void animateStep(float delta) {
         position.add(velocity.multiply(delta));
+        if (position.getX() <= 0)
+            velocity.setX(Math.abs(velocity.getX()));
+        if (position.getX() + size >= GUI_WIDTH)
+            velocity.setX(-Math.abs(velocity.getX()));
+        if (position.getY() <= 0)
+            velocity.setY(Math.abs(velocity.getY()));
+        if (position.getY() + size >= GUI_HEIGHT)
+            velocity.setY(-Math.abs(velocity.getY()));
+    }
+
+    public void setVelocity(Vector velocity) {
+        this.velocity = velocity;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+        dvd.setColor(color);
     }
     
 }

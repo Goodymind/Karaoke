@@ -67,8 +67,18 @@ public class Vector {
         return this;
     }
 
+    public Vector add(double n) {
+        x += n;
+        y += n;
+        return this;
+    }
+
     public static Vector add(Vector a, Vector b) {
         return new Vector(a.getX() + b.getX(), a.getY() + b.getY());
+    }
+
+    public static Vector add(Vector vector, double n) {
+        return new Vector(vector.getX() + n, vector.getY() + n);
     }
 
     public Vector subtract(Vector vector) {
@@ -101,10 +111,13 @@ public class Vector {
     public Point2D.Double toPoint2D() {
         return new Point2D.Double(x, y);
     }
+
     public static Vector lerp(Vector a, Vector b, float i) {
         return Vector.add(a, Vector.subtract(b, a).multiply(i));
     }
+
     public static Vector pointToVector(Point pt) {
         return new Vector(pt.getX(), pt.getY());
     }
+
 }

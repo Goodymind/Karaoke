@@ -4,19 +4,30 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Random;
+
 import customData.Vector;
 import drawingObjects.DVD;
 import drawingObjects.DrawingObject;
+import drawingObjects.Rectangle;
 
 public class DVDScreen extends SceneCanvas {
 
-    public DVDScreen() {
-        super();
+    private DVD dvd;
+    private Rectangle bg;
+    private Random rng;
+    @Override
+    protected ArrayList<DrawingObject> draw() {
+        rng = new Random();
+        dvd = new DVD(new Vector(100, 100), 200f, Color.RED);
+        bg = new Rectangle(0, 0, 800, 600, Color.BLACK);
         MouseListener listener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 var mousePos = Vector.pointToVector(e.getPoint());
-                System.out.println(mousePos);
+                Vector newVelocity = Vector.subtract(dvd.getPosition(), mousePos);
+                dvd.setVelocity(newVelocity);
+                dvd.setColor(new Color(rng.nextInt(30, 255), rng.nextInt(30, 255), rng.nextInt(30, 255)));
             }
 
             @Override
@@ -37,12 +48,9 @@ public class DVDScreen extends SceneCanvas {
 
         };
         addMouseListener(listener);
-    }
-
-    @Override
-    protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> obj = new ArrayList<DrawingObject>();
-        obj.add(new DVD(new Vector(100, 100), 200f, Color.RED));
+        obj.add(bg);
+        obj.add(dvd);
         return obj;
     }
 

@@ -20,6 +20,9 @@ public class LyricDisplay {
     private static int currentLine;
 
     public static void load() {
+        label.setFont(new Font("Sans Serif", Font.PLAIN, 48));
+        label.setText("Select a Song");
+
         paths.put("Creep", "lyrics\\creep.radiohead.txt");
 
         for (String title : paths.keySet()) {
@@ -52,7 +55,9 @@ public class LyricDisplay {
 
     public static void stop() {
         if (songStarted) {
-            label.setVisible(false);
+            label.setFont(new Font("Sans Serif", Font.PLAIN, 48));
+            label.setText("Select a Song");
+            songStarted = false;
         }
     }
 

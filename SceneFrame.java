@@ -72,26 +72,24 @@ public class SceneFrame {
 
         contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(stopPanel, BorderLayout.SOUTH);
-        //KaraokeAudio.startAudio("If I Am With You");
+        // KaraokeAudio.startAudio("If I Am With You");
 
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                KaraokeAudio.stopAudio();
+                LyricDisplay.stop();
                 if (ae.getSource() == song_one) {
-                    KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("Creep");
                     LyricDisplay.start("Creep");
                 }
                 if (ae.getSource() == song_two) {
-                    KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("My Love Mine All Mine");
+                    LyricDisplay.start("My Love Mine All Mine");
                 }
                 if (ae.getSource() == song_three) {
-                    KaraokeAudio.stopAudio();
                     KaraokeAudio.startAudio("Close To You");
-                }
-                if (ae.getSource() == stopButton) {
-                    KaraokeAudio.stopAudio();
+                    LyricDisplay.start("Close To You");
                 }
             }
         };

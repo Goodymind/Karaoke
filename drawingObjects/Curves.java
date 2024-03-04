@@ -73,4 +73,8 @@ public class Curves implements DrawingObject {
         // TODO Auto-generated method stub
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
 }
