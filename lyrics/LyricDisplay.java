@@ -17,6 +17,7 @@ public class LyricDisplay {
     public static JLabel label;
     private static float totalTime;
     private static boolean songStarted = false;
+    private static boolean songStopped = false;
     private static int currentLine;
 
     public static void load() {
@@ -48,6 +49,14 @@ public class LyricDisplay {
         currentLine = -1;
         label.setFont(new Font("Sans Serif", Font.ITALIC, 48));
         label.setText(title);
+    }
+
+    public static void stop() {
+        if (songStarted) {
+            songStopped = true;
+            label.setVisible(false);
+
+        }
     }
 
     public static void step(float delta) {
