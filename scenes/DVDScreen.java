@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import customData.Vector;
+import drawingObjects.Cloud;
 import drawingObjects.DVD;
 import drawingObjects.DrawingObject;
 import drawingObjects.RectangleBackground;
@@ -53,6 +54,11 @@ public class DVDScreen extends SceneCanvas {
         ArrayList<DrawingObject> obj = new ArrayList<DrawingObject>();
         obj.add(bg);
         obj.add(dvd);
+
+        for (int i = 0; i < 20; i++) {
+            obj.add(new Cloud(i * 100, 15, Math.random() * 10 + 30,
+                    new Color(rng.nextInt(0, 255), rng.nextInt(0, 255), rng.nextInt(0, 255)), Math.random() * 20 + 5));
+        }
         return obj;
     }
 
