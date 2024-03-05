@@ -72,7 +72,7 @@ public class SceneFrame {
 
         contentPane.add(buttonPanel, BorderLayout.NORTH);
         contentPane.add(stopPanel, BorderLayout.SOUTH);
-        // KaraokeAudio.startAudio("If I Am With You");
+        KaraokeAudio.startAudio("If I Am With You");
 
         ActionListener karaokeButtonControlListeners = new ActionListener() {
             @Override
