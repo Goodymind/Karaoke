@@ -1,7 +1,7 @@
 /**
     The Vector class provides a way to simplify the management of coordinates, 
     inspired by the Godot Game Engine's Vector system, aiming to replicate its 
-    usability. Java's Vector class implements a growing array of objects, with 
+    usability. Java's Vector class implements a growing array of objects, while 
     instances of this Vector class holding an abscissa and ordinate, and providing 
     a list of features to simplify common operations on vectors.
 
