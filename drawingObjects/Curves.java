@@ -72,5 +72,4 @@ public class Curves implements DrawingObject {
     public void setColor(Color color) {
         this.color = color;
     }
-
 }
