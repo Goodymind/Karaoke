@@ -38,10 +38,4 @@ public class Rectangle implements DrawingObject {
     public Vector getPosition() {
         return new Vector(x, y);
     }
-
-    @Override
-    public void animateStep(float delta) {
-        // none
-    }
-
 }

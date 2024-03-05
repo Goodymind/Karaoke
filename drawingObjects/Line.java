@@ -47,9 +47,4 @@ public class Line implements DrawingObject {
     public Vector getPosition() {
         return new Vector(startx, starty);
     }
-
-    @Override
-    public void animateStep(float delta) {
-        // none
-    }
 }

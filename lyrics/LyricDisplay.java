@@ -31,8 +31,6 @@ public class LyricDisplay {
     }
 
     public static final Map<String, String> paths = new HashMap<String, String>();
-    // public static final ArrayList<Integer> times = new ArrayList<Integer>();
-    // public static final ArrayList<String> lines = new ArrayList<String>();
     public static final Map<String, ArrayList<LyricLine>> lyrics = new HashMap<String, ArrayList<LyricLine>>();
 
     public static JLabel label;
@@ -58,9 +56,7 @@ public class LyricDisplay {
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
                     var data = line.split(":");
-                    // times.add(Integer.parseInt(data[0]));
                     lyrics.get(title).add(new LyricLine(Float.parseFloat(data[0]), data[1]));
-                    // lines.add(data[1]);
                 }
                 reader.close();
 

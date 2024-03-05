@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import customData.Vector;
 
-public class Sun implements DrawingObject {
+public class Sun implements DrawingObject, AnimatedObject {
     private Vector position;
     private double size;
     private double angle;

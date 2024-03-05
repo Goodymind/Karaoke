@@ -69,11 +69,6 @@ public class Curves implements DrawingObject {
         return points.get(0)[0];
     }
 
-    @Override
-    public void animateStep(float delta) {
-        // none
-    }
-
     public void setColor(Color color) {
         this.color = color;
     }

@@ -3,6 +3,8 @@ package scenes;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+
+import drawingObjects.AnimatedObject;
 import drawingObjects.DrawingObject;
 
 public class SceneCanvas extends JComponent {
@@ -33,7 +35,9 @@ public class SceneCanvas extends JComponent {
      */
     public void animateStep(float delta) {
         for (DrawingObject drawingObject : drawingObjects) {
-            drawingObject.animateStep(delta);
+            if (drawingObject instanceof AnimatedObject animatedObject) {
+                animatedObject.animateStep(delta);
+            }
         }
     }
 

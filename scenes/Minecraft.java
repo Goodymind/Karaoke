@@ -14,9 +14,7 @@ public class Minecraft extends SceneCanvas {
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
         raindrops = initRain();
-        objects.add(
-                new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 750, -500,
-                        0, 0));
+        objects.add(new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 750, -500, 0, 0));
         objects.add(new Rectangle(0, 501, 800, 173, new Color(97, 74, 42)));
         objects.add(new Sun(new Vector(680, 0), 120, 0));
 

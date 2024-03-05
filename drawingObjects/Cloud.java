@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import customData.Vector;
 
-public class Cloud implements DrawingObject {
+public class Cloud implements DrawingObject, AnimatedObject {
 
     private double x;
     private double y;
@@ -55,8 +55,7 @@ public class Cloud implements DrawingObject {
         x += speed * delta;
 
         if (x - size * .5 >= GUI_WIDTH) {
-            x = -(size * 1.70); // Set the cloud's x-coordinate to a negative value to loop back
-            // actually pretty smart, nice
+            x = -(size * 1.70);
         }
     }
 

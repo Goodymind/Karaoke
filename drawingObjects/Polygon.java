@@ -43,10 +43,5 @@ public class Polygon implements DrawingObject{
     public Vector getPosition() {
         return points.get(0);
     }
-
-    @Override
-    public void animateStep(float delta) {
-        // NONE
-    }
     
 }

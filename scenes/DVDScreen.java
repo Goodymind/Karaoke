@@ -22,8 +22,6 @@ public class DVDScreen extends SceneCanvas {
     protected ArrayList<DrawingObject> draw() {
         rng = new Random();
         dvd = new DVD(new Vector(0, 0), 200f, Color.RED);
-        // bg = new RectangleBackground(0, 0, 800, 600, Color.BLACK, new Color(140, 190,
-        // 214), 400, 1500, 400,-300);
         bg = new Rectangle(0, 0, 800, 600, new Color(10, 10, 10));
         MouseListener listener = new MouseListener() {
             @Override
@@ -55,14 +53,6 @@ public class DVDScreen extends SceneCanvas {
         ArrayList<DrawingObject> obj = new ArrayList<DrawingObject>();
         obj.add(bg);
         obj.add(dvd);
-
-        /*
-         * for (int i = 0; i < 20; i++) {
-         * obj.add(new Cloud(i * 100, 15, Math.random() * 10 + 30,
-         * new Color(rng.nextInt(0, 255), rng.nextInt(0, 255), rng.nextInt(0, 255)),
-         * Math.random() * 20 + 5));
-         * }
-         */
         return obj;
     }
 

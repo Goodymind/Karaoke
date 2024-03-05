@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import customData.Vector;
 
-public class SailBoat implements DrawingObject {
+public class SailBoat implements DrawingObject, AnimatedObject {
 
     private Vector position;
     private float size;

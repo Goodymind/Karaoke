@@ -44,9 +44,4 @@ public class Square implements DrawingObject {
         return new Vector(x, y);
     }
 
-    @Override
-    public void animateStep(float delta) {
-        // none
-    }
-
 }

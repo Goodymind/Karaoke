@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import customData.Vector;
 
-public class DVD implements DrawingObject {
+public class DVD implements DrawingObject, AnimatedObject {
 
     private static final int GUI_WIDTH = 800;
     private static final int GUI_HEIGHT = 600;

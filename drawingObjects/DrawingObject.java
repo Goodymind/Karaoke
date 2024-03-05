@@ -11,5 +11,5 @@ public interface DrawingObject {
      * this is called in order to advance the animation by one
      * @param delta time (in seconds) between the previous call and the current call of animateStep
      */
-    void animateStep(float delta);
+    //void animateStep(float delta);
 }

@@ -29,21 +29,6 @@ public class KaraokeAudio {
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
-
-            // Add a LineListener to the clip
-            /*  Lets not make a "default song" nalang it makes the whole thing convuluted
-             * 
-             * clip.addLineListener(new LineListener() {
-             * 
-             * @Override
-             * public void update(LineEvent event) {
-             * if (event.getType() == LineEvent.Type.STOP) {
-             * // Might trigger infinite recursion, added an early returner
-             * stopAudio();
-             * }
-             * }
-             * });
-             */
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,7 +36,6 @@ public class KaraokeAudio {
     }
 
     public static void startAudio(String title) {
-        System.out.println("Start Audio invoked: " + title);
         if (!audioStopped)
             return;
         audioStopped = false;
@@ -61,7 +45,6 @@ public class KaraokeAudio {
     }
 
     public static void stopAudio() {
-        System.out.println("Stop Audio invoked");
         if (audioStopped)
             return;
         audioStopped = true;
