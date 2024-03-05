@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import drawingObjects.AnimatedObject;
 import drawingObjects.DrawingObject;
+import drawingObjects.Rain;
 
 public class SceneCanvas extends JComponent {
 
@@ -66,7 +67,10 @@ public class SceneCanvas extends JComponent {
             if (drawingObject instanceof AnimatedObject animatedObject) {
                 animatedObject.animateStep(delta);
             }
+
         }
+        for (Rain raindrop : raindrops) {
+            raindrop.makeItRain(g);
     }
 
     /**

@@ -33,6 +33,13 @@ public class Rain {
     private double velocity;
     Random rd;
 
+    /**
+     * Constructs a Rain object with the specified initial position and velocity.
+     *
+     * @param x        the x-coordinate of the raindrop's initial position
+     * @param y        the y-coordinate of the raindrop's initial position
+     * @param velocity the velocity at which the raindrop falls
+     */
     public Rain(double x, double y, double velocity) {
         this.x = x;
         this.y = y;
@@ -40,6 +47,11 @@ public class Rain {
         rd = new Random();
     }
 
+    /**
+     * Renders the raindrop falling downwards on the screen.
+     *
+     * @param g the Graphics object to draw the raindrop
+     */
     public void makeItRain(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

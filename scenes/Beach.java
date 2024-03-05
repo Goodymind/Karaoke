@@ -47,6 +47,13 @@ public class Beach extends SceneCanvas {
     private ArrayList<Vector[]> animatedPoints;
     private ArrayList<Vector> targetPoints;
 
+    /**
+     * Initializes the drawing objects for the beach scene (sand, sky, waves, sun,
+     * clouds, and sailboats). It returns a list of drawing objects representing the
+     * beach scene.
+     * 
+     * @return The list of drawing objects representing the beach scene.
+     */
     @Override
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
@@ -75,6 +82,11 @@ public class Beach extends SceneCanvas {
         return objects;
     }
 
+    /**
+     * Initializes the sand polygon representing the sand and returns it.
+     * 
+     * @return The sand polygon object.
+     */
     private Polygon initSand() {
         var points = new ArrayList<Vector>();
         points.add(new Vector(0, 300));
@@ -84,6 +96,11 @@ public class Beach extends SceneCanvas {
         return new Polygon(points, new Color(249, 220, 182));
     }
 
+    /**
+     * Initializes the waves curves for the beach scene and returns them.
+     * 
+     * @return The waves object.
+     */
     private Curves initWaves() {
         var points = new ArrayList<Vector[]>();
         animatedPoints = new ArrayList<Vector[]>();
@@ -117,6 +134,13 @@ public class Beach extends SceneCanvas {
         return new Curves(points, new Color(95, 72, 255));
     }
 
+    /**
+     * Initializes the sky rectangle(Background) representing the sky of the beach
+     * scene and
+     * returns it.
+     * 
+     * @return The sky rectangle object(RectangleBackground object).
+     */
     private Rectangle initSky() {
         return new RectangleBackground(0, 0, 800, 600, new Color(245, 129, 0), new Color(39, 0, 108), 0, 300, 0, 0);
     }
@@ -124,6 +148,14 @@ public class Beach extends SceneCanvas {
     float t = 0;
     int d = 1;
 
+    /**
+     * Manages the animation of the beach scene, adjusting elements like the
+     * position of the sun, movement of clouds, and waves crashing on the shore,
+     * based on the elapsed time since the last frame.
+     * 
+     * @param delta The time elapsed since the last animation frame, influencing the
+     *              animation speed and progression.
+     */
     @Override
     public void animateStep(float delta) {
         sun.animateStep(delta);
@@ -152,5 +184,4 @@ public class Beach extends SceneCanvas {
         }
         t += delta;
     }
-
 }

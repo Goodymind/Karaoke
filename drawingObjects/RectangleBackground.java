@@ -34,6 +34,23 @@ public class RectangleBackground extends Rectangle {
     protected double startX;
     protected double startY;
 
+    /**
+     * Draws a rectangle with a gradient background using the specified start and
+     * end points for the gradient. This subclass of Rectangle provides enhanced
+     * control over the appearance of gradient backgrounds, suitable for scenery
+     * backgrounds.
+     * 
+     * @param x      The x-coordinate of the top-left corner of the rectangle.
+     * @param y      The y-coordinate of the top-left corner of the rectangle.
+     * @param width  The width of the rectangle.
+     * @param height The height of the rectangle.
+     * @param color1 The starting color of the gradient.
+     * @param color2 The ending color of the gradient.
+     * @param startX The x-coordinate of the start point of the gradient.
+     * @param startY The y-coordinate of the start point of the gradient.
+     * @param endX   The x-coordinate of the end point of the gradient.
+     * @param endY   The y-coordinate of the end point of the gradient.
+     */
     public RectangleBackground(double x, double y, double width, double height, Color color1, Color color2,
             double startX, double startY, double endX, double endY) {
         super(x, y, width, height, color1);
@@ -44,6 +61,13 @@ public class RectangleBackground extends Rectangle {
         this.startY = startY;
     }
 
+    /**
+     * Draws a rectangle with a gradient background using the specified start and
+     * end points for the gradient. The gradient colors are determined by 'color'
+     * and 'color2'.
+     * 
+     * @param g2d The graphics2D used for drawing.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         GradientPaint gradient = new GradientPaint((float) startX, (float) startY, color, (float) endX, (float) endY,

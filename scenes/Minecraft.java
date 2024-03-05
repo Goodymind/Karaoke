@@ -110,6 +110,15 @@ public class Minecraft extends SceneCanvas {
         return grassObjects;
     }
 
+    /**
+     * Draws the bush. This method creates and returns a list of drawing objects
+     * representing a bush with the specified color at the given x-coordinate.
+     * 
+     * @return The list of drawing objects representing each part of the bush.
+     * @param x     The x-coordinate of the bush.
+     * @param color The color of the bush.
+     */
+
     private ArrayList<DrawingObject> bush(double x, Color color) {
         ArrayList<DrawingObject> bushObjects = new ArrayList<DrawingObject>();
         bushObjects.add(new Cloud(x, 468, 30, color, 0));
@@ -117,6 +126,14 @@ public class Minecraft extends SceneCanvas {
         return bushObjects;
     }
 
+    /**
+     * Draws a tree. This method creates and returns a list of drawing objects
+     * representing a tree with the specified color at the given x-coordinate.
+     * 
+     * @return The list of drawing objects representing each part of the tree.
+     * @param x     The x-coordinate of the tree.
+     * @param color The color of the tree.
+     */
     private ArrayList<DrawingObject> tree(double x, Color color) {
         ArrayList<DrawingObject> treeObjects = new ArrayList<DrawingObject>();
         treeObjects.add(new Rectangle(x - 5, 420.5, 37, 80, new Color(112, 101, 61)));
@@ -130,6 +147,15 @@ public class Minecraft extends SceneCanvas {
         return treeObjects;
     }
 
+    /**
+     * Draws the first variation of a flower. This method creates and returns a list
+     * of drawing objects representing a flower with the specified color at the
+     * given x-coordinate.
+     * 
+     * @return The list of drawing objects representing each part of the flower1.
+     * @param x     The x-coordinate of the flower1.
+     * @param color The color of the flower1.
+     */
     private ArrayList<DrawingObject> flower1(double x, Color color) {
         ArrayList<DrawingObject> flowerObjects = new ArrayList<DrawingObject>();
         flowerObjects.add(new Rectangle(x + 3, 472, 6, 30, new Color(48, 105, 75)));
@@ -141,6 +167,15 @@ public class Minecraft extends SceneCanvas {
         return flowerObjects;
     }
 
+    /**
+     * Draws the second variation of a flower. This method creates and returns a
+     * list of drawing objects representing a flower with the specified color at the
+     * given x-coordinate.
+     * 
+     * @return The list of drawing objects representing each part of the flower2.
+     * @param x     The x-coordinate of the flower2.
+     * @param color The color of the flower2.
+     */
     private ArrayList<DrawingObject> flower2(double x, Color color) {
         ArrayList<DrawingObject> flowerObjects = new ArrayList<DrawingObject>();
         flowerObjects.add(new Rectangle(x, 478, 5, 24, new Color(48, 105, 75)));
@@ -155,6 +190,12 @@ public class Minecraft extends SceneCanvas {
         return flowerObjects;
     }
 
+    /**
+     * Initializes the raindrop n number of times (where n = (i < n in the for
+     * loop)) to show a Rain effect.
+     * 
+     * @return The list of raindrops
+     */
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
         for (int i = 0; i < 69; i++) {
@@ -166,6 +207,12 @@ public class Minecraft extends SceneCanvas {
         return raindrops;
     }
 
+    /**
+     * Paints the raindrops on the scene canvas. This method paints the raindrops on
+     * the scene canvas using the provided graphics.
+     * 
+     * @param g graphics
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

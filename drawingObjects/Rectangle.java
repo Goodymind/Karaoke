@@ -35,6 +35,17 @@ public class Rectangle implements DrawingObject {
     protected double height;
     protected Color color;
 
+    /**
+     * Constructs a Rectangle object with the specified position, dimensions, and
+     * color.
+     *
+     * @param x      the x-coordinate of the top-left corner of the rectangle
+     * @param y      the y-coordinate of the top-left corner of the rectangle
+     * @param width  the width of the rectangle
+     * @param height the height of the rectangle
+     * @param color  the color of the rectangle
+     */
+
     public Rectangle(double x, double y, double width, double height, Color color) {
         this.x = x;
         this.y = y;
@@ -43,6 +54,11 @@ public class Rectangle implements DrawingObject {
         this.color = color;
     }
 
+    /**
+     * Draws a rectangle with the specified position, dimensions, and color.
+     * 
+     * @param g2d The graphics 2D used for drawing.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         Rectangle2D.Double rect = new Rectangle2D.Double(x, y, width, height);
@@ -50,12 +66,22 @@ public class Rectangle implements DrawingObject {
         g2d.fill(rect);
     }
 
+    /**
+     * Sets the position of the rectangle to the specified vector.
+     * 
+     * @param vector The vector representing the new position of the rectangle.
+     */
     @Override
     public void setPosition(Vector vector) {
         x = vector.getX();
         y = vector.getY();
     }
 
+    /**
+     * Retrieves the current position of the rectangle.
+     * 
+     * @return The vector representing the current position of the rectangle.
+     */
     @Override
     public Vector getPosition() {
         return new Vector(x, y);

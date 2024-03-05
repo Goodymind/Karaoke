@@ -41,6 +41,21 @@ public class SailBoat implements DrawingObject, AnimatedObject {
     private Color color;
     private static final int GUI_WIDTH = 800;
 
+    /**
+     * This class represents a sailboat by implementing both the DrawingObject and
+     * AnimatedObject interfaces, enabling its rendering and animation.
+     * Utilizing curves and lines, it constructs the sailboat's base, pole base,
+     * pole, sail, and rope, enhancing the detail.
+     * 
+     * @param position The position vector representing the initial location of
+     *                 the sailboat.
+     * @param size     The size of the sailboat, influencing the dimensions of its
+     *                 components.
+     * @param speed    The speed at which the sailboat moves horizontally across the
+     *                 screen.
+     * @param color    The color of the sailboat's Pole Base, determining its visual
+     *                 appearance.
+     */
     public SailBoat(Vector position, float size, float speed, Color color) {
         this.position = position;
         this.size = size;
@@ -53,6 +68,11 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         rope = setupRope();
     }
 
+    /**
+     * This method sets up the base of the sailboat, creating a series of points
+     * defining its shape and size. It utilizes curves to generate the base
+     * structure of the sailboat.
+     */
     private Curves setupBase() {
         ArrayList<Vector[]> basePoints = new ArrayList<Vector[]>();
         basePoints.add(new Vector[] { new Vector(0, 0.8) });
@@ -69,6 +89,11 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         return new Curves(basePoints, new Color(139, 69, 19));
     }
 
+    /**
+     * Initializes the pole base of the sailboat by defining a sequence of points
+     * representing its outline. By utilizing curves, it constructs the pole base
+     * with great dimensions and curvature.
+     */
     private Curves setupPoleBase() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
         points.add(new Vector[] { new Vector(0.2, 0.8) });
@@ -83,6 +108,11 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         return new Curves(points, color);
     }
 
+    /**
+     * Sets up the pole of the sailboat, establishing its shape and size through a
+     * set of coordinate points. Utilizing curves, it creates the pole with
+     * appropriate dimensions and curvature.
+     */
     private Curves setupPole() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
         points.add(new Vector[] { new Vector(0.5, 0.1) });
@@ -98,6 +128,12 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         return new Curves(points, new Color(160, 82, 45));
     }
 
+    /**
+     * Initializes the sail of the sailboat by defining a series of points outlining
+     * its shape and dimensions. Using curves, it constructs the sail with accurate
+     * proportions and curvature, contributing to the sailboat's realistic
+     * representation within the scene.
+     */
     private Curves setupSail() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
         points.add(new Vector[] { new Vector(0.5, 0.1) });
@@ -112,12 +148,28 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         return new Curves(points, new Color(255, 218, 185));
     }
 
+    /**
+     * Sets up the rope connecting the sail to the sailboat, defining its starting
+     * and ending points. Utilizing a line segment, it creates the rope with
+     * specified thickness and color, enhancing the visual cohesion of the
+     * sailboat's components.
+     */
     private Line setupRope() {
         Vector start = new Vector(0.5, 0.1).multiply(size);
         Vector end = new Vector(0, 0.8).multiply(size);
         return new Line(start.getX(), start.getY(), end.getX(), end.getY(), 1, new Color(104, 82, 63));
     }
 
+    /**
+     * Draws the sailboat onto the graphics context using the provided 2D graphics
+     * object, ensuring accurate positioning and appearance within the scene.
+     * It translates the graphics context to the sailboat's position and renders
+     * each component, including the base, pole, sail, and rope, with their
+     * respective colors and shapes.
+     * 
+     * @param g2d The 2D graphics object used for rendering the sailboat onto the
+     *            graphical scene.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         var reset = g2d.getTransform();
@@ -131,16 +183,42 @@ public class SailBoat implements DrawingObject, AnimatedObject {
         g2d.setTransform(reset);
     }
 
+    /**
+     * Updates the position of the sailboat based on the provided vector,
+     * facilitating dynamic movement and animation within the graphical environment.
+     * This method sets the sailboat's position to the coordinates specified in the
+     * vector, allowing seamless integration with other animated objects.
+     *
+     * @param vector The vector containing the new position coordinates for the
+     *               sailboat.
+     */
     @Override
     public void setPosition(Vector vector) {
         this.position = vector;
     }
 
+    /**
+     * Retrieves the current position of the sailboat as a vector, enabling external
+     * components to access and manipulate its location.
+     * It returns a vector containing the x and y coordinates of the sailboat's
+     * position, providing essential information for interactive scenarios and scene
+     * management.
+     *
+     * @return A vector representing the current position of the sailboat within the
+     *         graphical environment.
+     */
     @Override
     public Vector getPosition() {
         return position;
     }
 
+    /**
+     * Moves the sailboat horizontally based on the elapsed time (delta). If the
+     * sailboat
+     * reaches the screen boundaries, it changes direction to keep it within bounds.
+     * 
+     * @param delta Elapsed time since the last animation step.
+     */
     @Override
     public void animateStep(float delta) {
         position.add(Vector.RIGHT.multiply(speed * delta));

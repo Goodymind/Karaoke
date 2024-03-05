@@ -33,6 +33,15 @@ public class Square implements DrawingObject {
     private double size;
     private Color color;
 
+    /**
+     * Constructor methodl; Initializes a square shape with the coordinate of the
+     * origin(starting point), size, and color.
+     * 
+     * @param x     The x-coordinate.
+     * @param y     The y-coordinate.
+     * @param size  The size of the square.
+     * @param color The color of the square.
+     */
     public Square(double x, double y, double size, Color color) {
         this.x = x;
         this.y = y;
@@ -40,6 +49,12 @@ public class Square implements DrawingObject {
         this.color = color;
     }
 
+    /**
+     * Renders the square shape using the provided 2D graphics object, ensuring
+     * proper positioning and appearance.
+     * 
+     * @param g2d The 2D graphics object used for rendering.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
@@ -51,12 +66,24 @@ public class Square implements DrawingObject {
         g2d.setTransform(reset);
     }
 
+    /**
+     * Updates the position of the square shape based on the provided vector,
+     * enabling animation and positioning within the graphical scene.
+     * 
+     * @param vector The vector containing the new position coordinates.
+     */
     @Override
     public void setPosition(Vector vector) {
         x = vector.getX();
         y = vector.getY();
     }
 
+    /**
+     * Retrieves the current position of the square shape as a vector, allowing
+     * external components to access and manipulate its location.
+     * 
+     * @return The vector representing the current position of the square.
+     */
     @Override
     public Vector getPosition() {
         return new Vector(x, y);

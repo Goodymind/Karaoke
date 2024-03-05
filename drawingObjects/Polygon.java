@@ -34,11 +34,22 @@ public class Polygon implements DrawingObject {
     private ArrayList<Vector> points;
     private Color color;
 
+    /**
+     * Constructs a Polygon object with the specified list of points and color.
+     *
+     * @param points the list of points defining the polygon
+     * @param color  the color of the polygon
+     */
     public Polygon(ArrayList<Vector> points, Color color) {
         this.points = points;
         this.color = color;
     }
 
+    /**
+     * Renders the polygon on the screen using the provided Graphics2D object.
+     *
+     * @param g2d the Graphics2D object to draw the polygon
+     */
     @Override
     public void draw(Graphics2D g2d) {
         var p = new Path2D.Double();
@@ -55,6 +66,16 @@ public class Polygon implements DrawingObject {
         g2d.fill(p);
     }
 
+    /**
+     * This method updates the position of the polygon to the specified vector. It
+     * calculates the difference between the current position of the first point of
+     * the polygon and the new position vector. Afterward, it adjusts all points of
+     * the polygon by adding this difference, effectively relocating the entire
+     * polygon.
+     *
+     * @param vector The vector indicating the new position of the polygon.
+     */
+
     @Override
     public void setPosition(Vector vector) {
         var difference = Vector.subtract(points.get(0), vector);
@@ -63,9 +84,14 @@ public class Polygon implements DrawingObject {
         }
     }
 
+    /**
+     * This method retrieves the position vector of the polygon, which corresponds
+     * to the position of its first point.
+     *
+     * @return The position vector representing the position of the polygon.
+     */
     @Override
     public Vector getPosition() {
         return points.get(0);
     }
-
 }
