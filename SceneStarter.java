@@ -26,7 +26,7 @@ public class SceneStarter {
 	 * @param args arguments of the app at runtime. It does not use any arguments.
 	 */
 	public static void main(String[] args) {
-		SceneFrame sceneFrame = new SceneFrame("Comforting Karaoke");
+		SceneFrame sceneFrame = new SceneFrame("Midterm Project - Abuke - Biason");
 		sceneFrame.setUpGUI();
 		sceneFrame.startAnimation();
 	}

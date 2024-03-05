@@ -28,18 +28,20 @@ import customData.*;
 public interface DrawingObject {
 	/**
 	 * Invoked to draw the object on the frame.
+	 * 
 	 * @param g2d Graphics2D pen for drawing and filling shapes.
 	 */
-    void draw(Graphics2D g2d);
+	void draw(Graphics2D g2d);
 
 	/**
 	 * Sets the position of the Drawing Object to vector.
+	 * 
 	 * @param vector
 	 */
-    void setPosition(Vector vector);
+	void setPosition(Vector vector);
 
 	/**
 	 * Returns the current position of the Drawing Object.
 	 */
-    Vector getPosition();
+	Vector getPosition();
 }

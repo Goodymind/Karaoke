@@ -37,9 +37,10 @@ public class Circle implements DrawingObject {
 
     /**
      * Constructs a Circle class.
-     * @param x coordinate
-     * @param y coordinate
-     * @param size diameter
+     * 
+     * @param x     coordinate
+     * @param y     coordinate
+     * @param size  diameter
      * @param color color of circle.
      */
     public Circle(double x, double y, double size, Color color) {
@@ -49,6 +50,13 @@ public class Circle implements DrawingObject {
         this.color = color;
     }
 
+    /**
+     * This method renders the circle using the provided Graphics2D object.
+     * It starts by creating an Ellipse2D object and translates it to the specified
+     * position. Then, it fills the ellipse with the specified color.
+     *
+     * @param g2d The Graphics2D object used to draw the circle.
+     */
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
         Ellipse2D.Double e = new Ellipse2D.Double(0, 0, size, size);
@@ -58,12 +66,22 @@ public class Circle implements DrawingObject {
         g2d.setTransform(reset);
     }
 
+    /**
+     * This method updates the position of the circle to the specified vector.
+     *
+     * @param vector The vector indicating the new position of the circle.
+     */
     @Override
     public void setPosition(Vector vector) {
         x = vector.getX();
         y = vector.getY();
     }
 
+    /**
+     * This method gets the position vector of the circle.
+     *
+     * @return The position vector representing the position of the circle.
+     */
     @Override
     public Vector getPosition() {
         return new Vector(x, y);
