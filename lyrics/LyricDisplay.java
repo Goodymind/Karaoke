@@ -111,7 +111,7 @@ public class LyricDisplay {
     public static void step(float delta) {
         if (!songStarted)
             return;
-        if (currentLine + 1 >= lyrics.get(currentSong).size()) {
+        if (currentLine + 1 > lyrics.get(currentSong).size()) {
             stop();
             return;
         }
