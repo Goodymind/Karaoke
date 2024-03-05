@@ -39,6 +39,17 @@ public class StateMachine extends JLayeredPane {
     private JPanel textPanel;
     public static JLabel label;
 
+    /**
+     * The Constructor;
+     * This method initializes the StateMachine with the provided
+     * scenes, sets the current scene to the first scene in the list
+     * (order of scenes is based on which is added first),
+     * creates a text panel for displaying lyrics overlay, and adds
+     * the current scene and text panel.
+     * 
+     * @param scenes The list of SceneCanvas objects, these are the scenes to be
+     *               shown in intervals.
+     */
     public StateMachine(ArrayList<SceneCanvas> scenes) {
         this.scenes = scenes;
         currentSceneIndex = 0;
@@ -60,15 +71,29 @@ public class StateMachine extends JLayeredPane {
         add(currentScene, 0);
     }
 
-    public void animateStep(float d) {
-        currentTime += d;
+    /**
+     * Animates the StateMachine by updating the current scene and handling
+     * scene transitions based on elapsed time.
+     * This method updates the current time and checks if it exceeds the
+     * duration of the current scene. If so, it switches to the next scene.
+     * It also calls the animateStep method of the current scene to animate it.
+     * 
+     * @param delta The time difference between animation steps.
+     */
+    public void animateStep(float delta) {
+        currentTime += delta;
         if (currentTime > sceneDuration) {
             currentTime -= sceneDuration;
             switchScene();
         }
-        currentScene.animateStep(d);
+        currentScene.animateStep(delta);
     }
 
+    /**
+     * Switches to the next scene in the list of scenes.
+     * This method removes the current scene, gets the next scene,
+     * adjusts its size, adds it, and updates the pane.
+     */
     private void switchScene() {
         remove(currentScene);
         currentSceneIndex++;
@@ -80,6 +105,13 @@ public class StateMachine extends JLayeredPane {
         add(currentScene, JLayeredPane.DEFAULT_LAYER);
         revalidate();
     }
+
+    /**
+     * Sets the line of the lyrics to be displayed
+     * This method sets the text of the label used for displaying lyrics overlay.
+     * 
+     * @param text A line of the lyrics to be displayed.
+     */
 
     public void setText(String text) {
         label.setText(text);

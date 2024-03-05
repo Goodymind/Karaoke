@@ -32,6 +32,15 @@ import customData.Vector;
 public class Minecraft extends SceneCanvas {
     private ArrayList<Rain> raindrops;
 
+    /**
+     * Initializes the drawing objects and creates the scene for the Minecraft
+     * environment(Nature Scenery). This method creates various drawing objects such
+     * as background, sun, clouds, trees, flowers, bushes, and grass patches to
+     * construct the Minecraft scene.
+     * 
+     * @return The list of drawing objects.
+     */
+
     @Override
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
@@ -80,6 +89,14 @@ public class Minecraft extends SceneCanvas {
         return objects;
     }
 
+    /**
+     * Draws the grass patch. This method generates and returns a list of drawing
+     * objects representing a grass patch at the specified x-coordinate.
+     * 
+     * @return The list of drawing objects representing a grass, when combined, is
+     *         the grass patch.
+     * @param x The x-coordinate of the grass patch.
+     */
     private ArrayList<DrawingObject> grassPatch(double x) {
         ArrayList<DrawingObject> grassObjects = new ArrayList<DrawingObject>();
 
