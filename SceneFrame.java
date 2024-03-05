@@ -36,7 +36,7 @@ public class SceneFrame {
 
         song_one = new JButton("Play Creep(Acoustic) - Radiohead");
         song_two = new JButton("Play My Love Mine All Mine - Mitski");
-        song_three = new JButton("Play Close To You(Acoustic) - The Carpenters");
+        song_three = new JButton("Play Close To You(Acoustic) - Carpenters");
         stopButton = new JButton("Stop Music");
 
         ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();

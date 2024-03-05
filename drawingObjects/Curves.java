@@ -15,9 +15,10 @@ public class Curves implements DrawingObject {
      * Accepts an arraylist of arrays of vectors with size 3,
      * with the first array being the starting point,
      * and the subsequent arrays consisting of:
-     *  the next point,
-     *  the bezier point of the previous point,
-     *  the bezier point of the end point
+     * the next point,
+     * the bezier point of the previous point,
+     * the bezier point of the end point
+     * 
      * @param points
      */
     public Curves(ArrayList<Vector[]> points, Color color) {
@@ -70,7 +71,7 @@ public class Curves implements DrawingObject {
 
     @Override
     public void animateStep(float delta) {
-        // TODO Auto-generated method stub
+        // none
     }
 
     public void setColor(Color color) {

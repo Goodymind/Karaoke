@@ -20,10 +20,12 @@ public class LyricDisplay {
     private static int currentLine;
 
     public static void load() {
-        label.setFont(new Font("Sans Serif", Font.PLAIN, 48));
+        label.setFont(new Font("Monospaced", Font.ITALIC, 20));
         label.setText("Select a Song");
 
         paths.put("Creep", "lyrics\\creep.radiohead.txt");
+        paths.put("My Love Mine All Mine", "lyrics\\mylovemineallmine.mitski.txt");
+        paths.put("Close To You", "lyrics\\closetoyou.carpenters.txt");
 
         for (String title : paths.keySet()) {
             String path = paths.get(title);
@@ -49,13 +51,13 @@ public class LyricDisplay {
         songStarted = true;
         totalTime = 0;
         currentLine = -1;
-        label.setFont(new Font("Sans Serif", Font.ITALIC, 48));
+        label.setFont(new Font("Monospaced", Font.BOLD, 35));
         label.setText(title);
     }
 
     public static void stop() {
         if (songStarted) {
-            label.setFont(new Font("Sans Serif", Font.PLAIN, 48));
+            label.setFont(new Font("Monospaced", Font.ITALIC, 20));
             label.setText("Select a Song");
             songStarted = false;
         }
@@ -66,7 +68,7 @@ public class LyricDisplay {
             return;
         int nextTime = times.get(currentLine + 1);
         if (totalTime > nextTime) {
-            label.setFont(new Font("Helvetica", Font.BOLD, 48));
+            label.setFont(new Font("Monospaced", Font.BOLD, 48));
             currentLine++;
             label.setText(lines.get(currentLine));
         }
