@@ -30,10 +30,12 @@ import javax.sound.sampled.*;
 public class KaraokeAudio {
     private static Map<String, String> songs = new HashMap<String, String>();
     private static Map<String, Clip> clips = new HashMap<String, Clip>();
-    private static Clip current_clip;
+    private static Clip currentClip;
     private static boolean audioStopped = true;
 
-    // static version of constructor
+    /**
+     * Initializes the loading of the song.
+     */
     public static void load() {
         songs.put("Creep", "audios\\Creep.wav");
         songs.put("My Love Mine All Mine", "audios\\Mitski - My Love Mine All Mine (Karaoke Version).wav");
@@ -44,6 +46,10 @@ public class KaraokeAudio {
         }
     }
 
+    /**
+     * Loads the specific song and stores its playback clip for future use.
+     * @title the title of the song.
+     */
     private static void loadSong(String title) {
         String filePath = songs.get(title);
         Clip clip = null;
@@ -58,23 +64,30 @@ public class KaraokeAudio {
         clips.put(title, clip);
     }
 
+    /**
+     * Starts the playback of the song, if it is not stopped, continue.
+     * @param title title of the song to play.
+     */
     public static void startAudio(String title) {
         if (!audioStopped)
             return;
         audioStopped = false;
-        current_clip = clips.get(title);
-        current_clip.setFramePosition(0);
-        current_clip.start();
+        currentClip = clips.get(title);
+        currentClip.setFramePosition(0);
+        currentClip.start();
     }
 
+    /**
+     * Stops the current song from playing.
+     */
     public static void stopAudio() {
         if (audioStopped)
             return;
         audioStopped = true;
-        if (current_clip != null) {
-            if (current_clip.isRunning())
-                current_clip.stop();
-            current_clip = null;
+        if (currentClip != null) {
+            if (currentClip.isRunning())
+                currentClip.stop();
+            currentClip = null;
         }
     }
 }

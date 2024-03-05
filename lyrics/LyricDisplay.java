@@ -34,20 +34,36 @@ import javax.swing.JLabel;
 
 public class LyricDisplay {
 
+    /**
+     * LyricLine is a representatiton of a line in a lyrics of a song.
+     * It stores the timing of the song in a float and the line in a string.
+     * Provides a less convuluted way of storing lyric data.
+     */
     private static class LyricLine {
 
         private float time;
         private String lyrics;
 
+        /**
+         * Creates a new LyricLine
+         * @param time the seekt time of the lyrics
+         * @param lyrics the lyrics at the time.
+         */
         public LyricLine(float time, String lyrics) {
             this.time = time;
             this.lyrics = lyrics;
         }
 
+        /**
+         * Gets time of the line
+         */
         public float getTime() {
             return time;
         }
 
+        /**
+         * Gets the line of the lyric at the time.
+         */
         public String getLine() {
             return lyrics;
         }
@@ -62,6 +78,10 @@ public class LyricDisplay {
     private static int currentLine;
     private static String currentSong;
 
+    /**
+     * Loads the Lyrics of the song from texts files.
+     * Stores the data in an ArrayList of LyricLines.
+     */
     public static void load() {
         label.setFont(new Font("Monospaced", Font.ITALIC, 20));
         label.setText("Select a Song");
@@ -90,6 +110,11 @@ public class LyricDisplay {
         }
     }
 
+    /**
+     * Starts the playback of the lyrics.
+     * Puts the text in the JLabel.
+     * @param title title of the song of the lyrics to display.
+     */
     public static void start(String title) {
         songStarted = true;
         totalTime = 0;
@@ -99,6 +124,9 @@ public class LyricDisplay {
         currentSong = title;
     }
 
+    /**
+     * Clears the displayed text and stops the lyric display.
+     */
     public static void stop() {
         if (songStarted) {
             label.setFont(new Font("Monospaced", Font.ITALIC, 20));
@@ -108,6 +136,11 @@ public class LyricDisplay {
         }
     }
 
+    /**
+     * Invoked to display the next line if the time has been reached for the line.
+     * The time elapsed is stored in totalTime.
+     * @param delta the time between the last invoke.
+     */
     public static void step(float delta) {
         if (!songStarted)
             return;

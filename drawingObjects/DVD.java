@@ -39,6 +39,12 @@ public class DVD implements DrawingObject, AnimatedObject {
     private Color color;
     Curves dvd;
 
+    /**
+     * Creates the DVD Drawing Object
+     * @param position position of the DVD
+     * @param size in pixels
+     * @param color color of the DVD
+     */
     public DVD(Vector position, float size, Color color) {
         this.position = position;
         this.size = size;
@@ -47,6 +53,10 @@ public class DVD implements DrawingObject, AnimatedObject {
         velocity = Vector.RIGHT.multiply(40);
     }
 
+    /**
+     * Initializes the points of the DVD and creates a Curves Object from the points
+     * @return the Curves object of the DVD.
+     */
     private Curves initDVD() {
         ArrayList<Vector[]> points = new ArrayList<Vector[]>();
         points.add(new Vector[] { new Vector(0.1, 0.26) });
@@ -90,6 +100,10 @@ public class DVD implements DrawingObject, AnimatedObject {
 
     }
 
+    /**
+     * Draws the DVD in the specified position.
+     * @param g2d the Graphics2D Object for drawing.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         AffineTransform reset = g2d.getTransform();
@@ -99,16 +113,28 @@ public class DVD implements DrawingObject, AnimatedObject {
         g2d.setTransform(reset);
     }
 
+    /**
+     * Sets the position of the DVD to the vector
+     * @param vector the new position.
+     */
     @Override
     public void setPosition(Vector vector) {
         position = vector;
     }
 
+    /**
+     * Gets the current position of the DVD.
+     */
     @Override
     public Vector getPosition() {
         return position;
     }
 
+    /**
+     * Animates the DVD by one step adding changes in position per second.
+     * If the edges of the DVD approaches the frame boundaries. It will bounce
+     * @param delta the time between the last invoke of animateStep
+     */
     @Override
     public void animateStep(float delta) {
         position.add(velocity.multiply(delta));
@@ -122,10 +148,18 @@ public class DVD implements DrawingObject, AnimatedObject {
             velocity.setY(-Math.abs(velocity.getY()));
     }
 
+    /**
+     * Sets the velocity of the dvd to the new Velocity.
+     * @param velocity new velocity.
+     */
     public void setVelocity(Vector velocity) {
         this.velocity = velocity;
     }
 
+    /**
+     * Sets the color of the DVD to the new color
+     * @param color the new color.
+     */
     public void setColor(Color color) {
         this.color = color;
         dvd.setColor(color);

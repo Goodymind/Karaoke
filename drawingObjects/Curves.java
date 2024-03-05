@@ -41,13 +41,18 @@ public class Curves implements DrawingObject {
      * the bezier point of the previous point,
      * the bezier point of the end point
      * 
-     * @param points
+     * @param points points of path and bezier points.
+     * @param color, color of the curved shape.
      */
     public Curves(ArrayList<Vector[]> points, Color color) {
         this.points = points;
         this.color = color;
     }
 
+    /**
+     * Draws the path from the points given and fills it with the color.
+     * @param g2d the Graphics2D object for drawing.
+     */
     @Override
     public void draw(Graphics2D g2d) {
         Path2D.Double p = new Path2D.Double();
@@ -70,6 +75,11 @@ public class Curves implements DrawingObject {
         g2d.fill(p);
     }
 
+    /**
+     * Changes the position of the Curved Shape to the vector by translating all the points
+     * towards the vector.
+     * @param vector the new position of the Curved shape.
+     */
     @Override
     public void setPosition(Vector vector) {
         var start = getPosition();
@@ -84,6 +94,9 @@ public class Curves implements DrawingObject {
         }
     }
 
+    /**
+     * Returns the current position (the first path point) of the Curved Shape;
+     */
     @Override
     public Vector getPosition() {
         if (points.size() < 1)
@@ -91,6 +104,9 @@ public class Curves implements DrawingObject {
         return points.get(0)[0];
     }
 
+    /**
+     * Sets the color of the Curved shape.
+     */
     public void setColor(Color color) {
         this.color = color;
     }

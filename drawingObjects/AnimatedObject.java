@@ -1,7 +1,7 @@
 /**
     This interface is designed for objects with animation, providing 
     its own interface for the sake of organization and eliminating the 
-    need for an undefined abstract class in objects without intended animation.
+    need for an unimplemented function in objects without intended animation.
 
     @author Alinus Abuke (230073)	
     @author Neil Aldous Biason (230940)
@@ -23,5 +23,9 @@
 package drawingObjects;
 
 public interface AnimatedObject {
+    /**
+     * Where changes in mutation happen over time
+     * @param delta time between last invoke.
+     */
     void animateStep(float delta);
 }

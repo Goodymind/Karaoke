@@ -33,11 +33,11 @@ import java.util.ArrayList;
 public class SceneFrame {
     private String title;
     private JFrame frame;
-    private JButton song_one;
-    private JButton song_two;
-    private JButton song_three;
+    private JButton songOne;
+    private JButton songTwo;
+    private JButton songThree;
     private JButton stopButton;
-    private StateMachine scene_switcher;
+    private StateMachine sceneSwitcher;
     private Timer timer;
     private long previousTime;
 
@@ -57,22 +57,22 @@ public class SceneFrame {
     public void setUpGUI() {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        song_one = new JButton("Play Creep(Acoustic) - Radiohead");
-        song_two = new JButton("Play My Love Mine All Mine - Mitski");
-        song_three = new JButton("Play Close To You(Acoustic) - Carpenters");
+        songOne = new JButton("Play Creep(Acoustic) - Radiohead");
+        songTwo = new JButton("Play My Love Mine All Mine - Mitski");
+        songThree = new JButton("Play Close To You(Acoustic) - Carpenters");
         stopButton = new JButton("Stop Music");
 
         ArrayList<SceneCanvas> scenes = new ArrayList<SceneCanvas>();
         scenes.add(new DVDScreen());
         scenes.add(new Minecraft());
         scenes.add(new Beach());
-        scene_switcher = new StateMachine(scenes);
+        sceneSwitcher = new StateMachine(scenes);
 
         LyricDisplay.label = StateMachine.label;
 
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new BorderLayout());
-        contentPane.add(scene_switcher, BorderLayout.CENTER);
+        contentPane.add(sceneSwitcher, BorderLayout.CENTER);
         setUpKaraokeControls(contentPane);
         KaraokeAudio.startAudio("If I Am With You");
 
@@ -92,9 +92,9 @@ public class SceneFrame {
         LyricDisplay.load();
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(song_one);
-        buttonPanel.add(song_two);
-        buttonPanel.add(song_three);
+        buttonPanel.add(songOne);
+        buttonPanel.add(songTwo);
+        buttonPanel.add(songThree);
 
         JPanel stopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         stopPanel.add(stopButton);
@@ -107,23 +107,23 @@ public class SceneFrame {
             public void actionPerformed(ActionEvent ae) {
                 KaraokeAudio.stopAudio();
                 LyricDisplay.stop();
-                if (ae.getSource() == song_one) {
+                if (ae.getSource() == songOne) {
                     KaraokeAudio.startAudio("Creep");
                     LyricDisplay.start("Creep");
                 }
-                if (ae.getSource() == song_two) {
+                if (ae.getSource() == songTwo) {
                     KaraokeAudio.startAudio("My Love Mine All Mine");
                     LyricDisplay.start("My Love Mine All Mine");
                 }
-                if (ae.getSource() == song_three) {
+                if (ae.getSource() == songThree) {
                     KaraokeAudio.startAudio("Close To You");
                     LyricDisplay.start("Close To You");
                 }
             }
         };
-        song_one.addActionListener(karaokeButtonControlListeners);
-        song_two.addActionListener(karaokeButtonControlListeners);
-        song_three.addActionListener(karaokeButtonControlListeners);
+        songOne.addActionListener(karaokeButtonControlListeners);
+        songTwo.addActionListener(karaokeButtonControlListeners);
+        songThree.addActionListener(karaokeButtonControlListeners);
         stopButton.addActionListener(karaokeButtonControlListeners);
     }
 
@@ -157,7 +157,7 @@ public class SceneFrame {
      */
     public void animateStep(float delta) {
         // Implement animation logic
-        scene_switcher.animateStep(delta);
-        scene_switcher.repaint();
+        sceneSwitcher.animateStep(delta);
+        sceneSwitcher.repaint();
     }
 }

@@ -35,6 +35,13 @@ public class Circle implements DrawingObject {
     private double size;
     private Color color;
 
+    /**
+     * Constructs a Circle class.
+     * @param x coordinate
+     * @param y coordinate
+     * @param size diameter
+     * @param color color of circle.
+     */
     public Circle(double x, double y, double size, Color color) {
         this.x = x;
         this.y = y;

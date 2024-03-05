@@ -35,6 +35,14 @@ public class Cloud implements DrawingObject, AnimatedObject {
     private double speed;
     private static final int GUI_WIDTH = 800;
 
+    /**
+     * Constructor creates an Animated Cloud Drawing Object.
+     * @param x coordinate
+     * @param y coordinate
+     * @param size size
+     * @param color color
+     * @param speed or change in x-coordinate per second.
+     */
     public Cloud(double x, double y, double size, Color color, double speed) {
         this.x = x;
         this.y = y;
@@ -43,6 +51,10 @@ public class Cloud implements DrawingObject, AnimatedObject {
         this.speed = speed;
     }
 
+    /**
+     * Draws the cloud with the Graphics2D object
+     * @param g2d Graphics2D object
+     */
     @Override
     public void draw(Graphics2D g2d) {
         Rectangle2D.Double body = new Rectangle2D.Double(x, y, size, size);
@@ -61,17 +73,28 @@ public class Cloud implements DrawingObject, AnimatedObject {
         g2d.fill(c6);
     }
 
+    /**
+     * sets the x and y coordinates of the Cloud to the vector type.
+     */
     @Override
     public void setPosition(Vector vector) {
         x = vector.getX();
         y = vector.getY();
     }
 
+    /**
+     * Returns the vector position of the cloud.
+     */
     @Override
     public Vector getPosition() {
         return new Vector(x, y);
     }
 
+    /**
+     * Moves the cloud by speed pixels per second.
+     * When it reaches the far right, move it to the left.
+     * @param delta the time between last invoke.
+     */
     @Override
     public void animateStep(float delta) {
         x += speed * delta;
@@ -79,13 +102,5 @@ public class Cloud implements DrawingObject, AnimatedObject {
         if (x - size * .5 >= GUI_WIDTH) {
             x = -(size * 1.70);
         }
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setX(double newX) {
-        x = newX;
     }
 }
