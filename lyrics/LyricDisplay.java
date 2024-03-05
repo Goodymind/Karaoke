@@ -32,7 +32,7 @@ public class LyricDisplay {
                 Scanner reader = new Scanner(file);
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
-                    var data = line.split(",");
+                    var data = line.split(":");
                     times.add(Integer.parseInt(data[0]));
                     lines.add(data[1]);
                 }
