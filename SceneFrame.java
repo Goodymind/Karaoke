@@ -1,3 +1,4 @@
+
 /**
 	The SceneFrame class contains the window frame.
     It is the root of the animation loop and the root of button inputs.
@@ -41,15 +42,16 @@ public class SceneFrame {
 
     /**
      * Constructor of the SceneFrame class.
+     * 
      * @param title title of the frame.
      */
     public SceneFrame(String title) {
         this.title = title;
     }
-    
+
     /*
      * setUpGUI setups the GUI components and layout of the frame.
-     * Also initializes the background scenes of the karaoke. 
+     * Also initializes the background scenes of the karaoke.
      */
     public void setUpGUI() {
         frame = new JFrame(title);
@@ -71,6 +73,7 @@ public class SceneFrame {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(scene_switcher, BorderLayout.CENTER);
         setUpKaraokeControls(contentPane);
+        KaraokeAudio.startAudio("If I Am With You");
 
         frame.setVisible(true);
         frame.pack();

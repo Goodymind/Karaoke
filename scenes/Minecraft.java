@@ -1,3 +1,25 @@
+/**
+    This class utilizes ArrayLists to display the shapes for the scenery. 
+    Inspired by Minecraft, it employs composite shapes and features 
+    the Rain effect.
+
+    @author Alinus Abuke (230073)	
+    @author Neil Aldous Biason (230940)
+    @version 06 March 2024
+
+    We have not discussed the Java language code in our program 
+    with anyone other than our instructor or the teaching assistants 
+    assigned to this course.
+
+    We have not used Java language code obtained from another student, 
+    or any other unauthorized source, either modified or unmodified.
+
+    If any Java language code or documentation used in our program 
+    was obtained from another source, such as a textbook or website, 
+    that has been clearly noted with a proper citation in the comments 
+    of our program.
+**/
+
 package scenes;
 
 import java.awt.Color;
@@ -14,7 +36,8 @@ public class Minecraft extends SceneCanvas {
     protected ArrayList<DrawingObject> draw() {
         ArrayList<DrawingObject> objects = new ArrayList<DrawingObject>();
         raindrops = initRain();
-        objects.add(new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 750, -500, 0, 0));
+        objects.add(new RectangleBackground(0, 0, 800, 600, new Color(255, 218, 185), new Color(135, 206, 235), 750,
+                -500, 0, 0));
         objects.add(new Rectangle(0, 501, 800, 173, new Color(97, 74, 42)));
         objects.add(new Sun(new Vector(680, 0), 120, 0));
 
@@ -117,10 +140,10 @@ public class Minecraft extends SceneCanvas {
 
     private ArrayList<Rain> initRain() {
         ArrayList<Rain> raindrops = new ArrayList<>();
-        for (int i = 0; i < 69; i++) { // Adjust number of raindrops as needed
+        for (int i = 0; i < 69; i++) {
             double x = Math.random() * 800;
             double y = 0;
-            double velocity = Math.random() + 60; // Random velocity
+            double velocity = Math.random() + 60;
             raindrops.add(new Rain(x, y, velocity));
         }
         return raindrops;

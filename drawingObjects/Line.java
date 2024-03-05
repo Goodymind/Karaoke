@@ -1,3 +1,25 @@
+/**
+    This class constructs a line segment defined by two points: 
+    the start and end points, as well as parameters for thickness 
+    and color. It implements the Drawing Object interface.
+
+    @author Alinus Abuke (230073)	
+    @author Neil Aldous Biason (230940)
+    @version 06 March 2024
+
+    We have not discussed the Java language code in our program 
+    with anyone other than our instructor or the teaching assistants 
+    assigned to this course.
+
+    We have not used Java language code obtained from another student, 
+    or any other unauthorized source, either modified or unmodified.
+
+    If any Java language code or documentation used in our program 
+    was obtained from another source, such as a textbook or website, 
+    that has been clearly noted with a proper citation in the comments 
+    of our program.
+**/
+
 package drawingObjects;
 
 import java.awt.BasicStroke;

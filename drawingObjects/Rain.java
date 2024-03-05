@@ -1,3 +1,26 @@
+/**
+    This class is responsible for creating the rain effect 
+    in the Minecraft Scenery. Upon instantiation, it initializes 
+    a "raindrop" with properties including position and velocity, 
+    and has a method, "makeItRain," to render raindrops falling downwards.
+
+    @author Alinus Abuke (230073)	
+    @author Neil Aldous Biason (230940)
+    @version 06 March 2024
+
+    We have not discussed the Java language code in our program 
+    with anyone other than our instructor or the teaching assistants 
+    assigned to this course.
+
+    We have not used Java language code obtained from another student, 
+    or any other unauthorized source, either modified or unmodified.
+
+    If any Java language code or documentation used in our program 
+    was obtained from another source, such as a textbook or website, 
+    that has been clearly noted with a proper citation in the comments 
+    of our program.
+**/
+
 package drawingObjects;
 
 import java.awt.*;
