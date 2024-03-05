@@ -10,14 +10,36 @@ import java.util.Scanner;
 import javax.swing.JLabel;
 
 public class LyricDisplay {
+
+    private static class LyricLine {
+
+        private float time;
+        private String lyrics;
+
+        public LyricLine(float time, String lyrics) {
+            this.time = time;
+            this.lyrics = lyrics;
+        }
+
+        public float getTime() {
+            return time;
+        }
+
+        public String getLine() {
+            return lyrics;
+        }
+    }
+
     public static final Map<String, String> paths = new HashMap<String, String>();
-    public static final ArrayList<Integer> times = new ArrayList<Integer>();
-    public static final ArrayList<String> lines = new ArrayList<String>();
+    // public static final ArrayList<Integer> times = new ArrayList<Integer>();
+    // public static final ArrayList<String> lines = new ArrayList<String>();
+    public static final Map<String, ArrayList<LyricLine>> lyrics = new HashMap<String, ArrayList<LyricLine>>();
 
     public static JLabel label;
     private static float totalTime;
     private static boolean songStarted = false;
     private static int currentLine;
+    private static String currentSong;
 
     public static void load() {
         label.setFont(new Font("Monospaced", Font.ITALIC, 20));
@@ -32,11 +54,13 @@ public class LyricDisplay {
             try {
                 File file = new File(path);
                 Scanner reader = new Scanner(file);
+                lyrics.put(title, new ArrayList<LyricLine>());
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
                     var data = line.split(":");
-                    times.add(Integer.parseInt(data[0]));
-                    lines.add(data[1]);
+                    // times.add(Integer.parseInt(data[0]));
+                    lyrics.get(title).add(new LyricLine(Float.parseFloat(data[0]), data[1]));
+                    // lines.add(data[1]);
                 }
                 reader.close();
 
@@ -51,8 +75,9 @@ public class LyricDisplay {
         songStarted = true;
         totalTime = 0;
         currentLine = -1;
-        label.setFont(new Font("Monospaced", Font.BOLD, 35));
+        label.setFont(new Font("MS Sans Serif", Font.BOLD, 35));
         label.setText(title);
+        currentSong = title;
     }
 
     public static void stop() {
@@ -60,17 +85,22 @@ public class LyricDisplay {
             label.setFont(new Font("Monospaced", Font.ITALIC, 20));
             label.setText("Select a Song");
             songStarted = false;
+            currentSong = "";
         }
     }
 
     public static void step(float delta) {
         if (!songStarted)
             return;
-        int nextTime = times.get(currentLine + 1);
+        if (currentLine + 1 >= lyrics.get(currentSong).size()) {
+            stop();
+            return;
+        }
+        float nextTime = lyrics.get(currentSong).get(currentLine + 1).getTime();
         if (totalTime > nextTime) {
-            label.setFont(new Font("Monospaced", Font.BOLD, 48));
+            label.setFont(new Font("MS Sans Serif", Font.PLAIN, 48));
             currentLine++;
-            label.setText(lines.get(currentLine));
+            label.setText(lyrics.get(currentSong).get(currentLine).getLine());
         }
         totalTime += delta;
     }

@@ -8,7 +8,7 @@ public class KaraokeAudio {
     private static Map<String, String> songs = new HashMap<String, String>();
     private static Map<String, Clip> clips = new HashMap<String, Clip>();
     private static Clip current_clip;
-    private static boolean audioStopped = false;
+    private static boolean audioStopped = true;
 
     // static version of constructor
     public static void load() {
@@ -31,16 +31,19 @@ public class KaraokeAudio {
             clip.open(audioStream);
 
             // Add a LineListener to the clip
-            clip.addLineListener(new LineListener() {
-                @Override
-                public void update(LineEvent event) {
-                    if (event.getType() == LineEvent.Type.STOP && !audioStopped) {
-
-                        current_clip.setFramePosition(0);
-                        current_clip.start();
-                    }
-                }
-            });
+            /*  Lets not make a "default song" nalang it makes the whole thing convuluted
+             * 
+             * clip.addLineListener(new LineListener() {
+             * 
+             * @Override
+             * public void update(LineEvent event) {
+             * if (event.getType() == LineEvent.Type.STOP) {
+             * // Might trigger infinite recursion, added an early returner
+             * stopAudio();
+             * }
+             * }
+             * });
+             */
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,20 +51,24 @@ public class KaraokeAudio {
     }
 
     public static void startAudio(String title) {
+        System.out.println("Start Audio invoked: " + title);
+        if (!audioStopped)
+            return;
+        audioStopped = false;
         current_clip = clips.get(title);
-        if (current_clip.isRunning()) {
-            current_clip.stop();
-        }
         current_clip.setFramePosition(0);
         current_clip.start();
-        audioStopped = false;
     }
 
     public static void stopAudio() {
-        if (current_clip != null && current_clip.isRunning()) {
-            while (current_clip.isRunning())
+        System.out.println("Stop Audio invoked");
+        if (audioStopped)
+            return;
+        audioStopped = true;
+        if (current_clip != null) {
+            if (current_clip.isRunning())
                 current_clip.stop();
-            audioStopped = true;
+            current_clip = null;
         }
     }
 }
