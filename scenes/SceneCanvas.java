@@ -34,6 +34,11 @@ public class SceneCanvas extends JComponent {
     private final Dimension size = new Dimension(800, 600);
     private ArrayList<DrawingObject> drawingObjects;
 
+    /**
+     * This constructor creates a SceneCanvas instance with a predefined size and a
+     * collection of drawing objects. It establishes the preferred dimensions of the
+     * scene and populates the list of drawing objects by invoking the draw method.
+     */
     public SceneCanvas() {
         setPreferredSize(size);
         drawingObjects = draw();
@@ -51,6 +56,7 @@ public class SceneCanvas extends JComponent {
     }
 
     /**
+     * This method iterates through the list of drawing objects and renders them.
      * Override to implement custom shape animations;
      * 
      * @param delta time (in seconds) between last update
@@ -64,10 +70,11 @@ public class SceneCanvas extends JComponent {
     }
 
     /**
-     * Override this and put the drawingObjects to display in the scene
-     * This is only called once
+     * Draws the components to display in the scene.
+     * This method should be overridden to specify the drawing objects to be
+     * displayed in the scene canvas; This is only called once.
      * 
-     * @return
+     * @return The list of drawing objects to be displayed.
      */
     protected ArrayList<DrawingObject> draw() {
         return drawingObjects;
