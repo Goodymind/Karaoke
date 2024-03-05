@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import customData.Vector;
-import drawingObjects.Cloud;
 import drawingObjects.DVD;
 import drawingObjects.DrawingObject;
 import drawingObjects.Rectangle;
