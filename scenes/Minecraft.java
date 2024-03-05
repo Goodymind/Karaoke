@@ -116,9 +116,9 @@ public class Minecraft extends SceneCanvas {
     private ArrayList<DrawingObject> flower1(double x, Color color) {
         ArrayList<DrawingObject> flowerObjects = new ArrayList<DrawingObject>();
         flowerObjects.add(new Rectangle(x + 3, 472, 6, 30, new Color(48, 105, 75)));
-        flowerObjects.add(new Square(x - 10.5, 449, 0, 24, color));
-        flowerObjects.add(new Square(x, 449, 0, 24, color));
-        flowerObjects.add(new Square(x - 5, 441, 0, 24, color));
+        flowerObjects.add(new Square(x - 10.5, 449, 24, color));
+        flowerObjects.add(new Square(x, 449, 24, color));
+        flowerObjects.add(new Square(x - 5, 441, 24, color));
         flowerObjects.add(new Circle(x + 2, 457, 8, Color.BLACK));
 
         return flowerObjects;
@@ -131,9 +131,9 @@ public class Minecraft extends SceneCanvas {
         flowerObjects.add(new Rectangle(x, 484, 15, 5, new Color(48, 105, 75)));
 
         flowerObjects.add(new Rectangle(x - 5.5, 462, 16, 11, color));
-        flowerObjects.add(new Square(x - 1.5, 470, 0, 8, color));
-        flowerObjects.add(new Square(x - 5.5, 456, 0, 6, color));
-        flowerObjects.add(new Square(x + 4.5, 456, 0, 6, color));
+        flowerObjects.add(new Square(x - 1.5, 470, 8, color));
+        flowerObjects.add(new Square(x - 5.5, 456, 6, color));
+        flowerObjects.add(new Square(x + 4.5, 456, 6, color));
 
         return flowerObjects;
     }
