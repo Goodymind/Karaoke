@@ -150,7 +150,7 @@ public class Beach extends SceneCanvas {
 
     /**
      * Manages the animation of the beach scene, adjusting elements like the
-     * position of the sun, movement of clouds, and waves crashing on the shore,
+     * position of the sun, movement of clouds, and waves' motion,
      * based on the elapsed time since the last frame.
      * 
      * @param delta The time elapsed since the last animation frame, influencing the
