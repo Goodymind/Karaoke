@@ -177,5 +177,4 @@ public final class Vector {
     public static Vector pointToVector(Point pt) {
         return new Vector(pt.getX(), pt.getY());
     }
-
 }
