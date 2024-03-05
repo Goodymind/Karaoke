@@ -25,7 +25,7 @@
 154:Oh-oh oh-oh
 157:She's running out the door (run)
 168:She's running out
-173:She run run run run
+173:She run, run, run, run~
 190:Ruuuuuuunnnnn~
 199:Whatever makes you happy
 204:Whatever you want
@@ -36,3 +36,4 @@
 232:What the hell am I doing here?
 238:I don't belong here
 240:I don't belong here
+246:...

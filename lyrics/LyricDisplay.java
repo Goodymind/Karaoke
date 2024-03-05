@@ -25,10 +25,7 @@ package lyrics;
 
 import java.awt.Font;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import javax.swing.JLabel;
 
@@ -46,7 +43,8 @@ public class LyricDisplay {
 
         /**
          * Creates a new LyricLine
-         * @param time the seekt time of the lyrics
+         * 
+         * @param time   the seekt time of the lyrics
          * @param lyrics the lyrics at the time.
          */
         public LyricLine(float time, String lyrics) {
@@ -72,7 +70,7 @@ public class LyricDisplay {
     public static final Map<String, String> paths = new HashMap<String, String>();
     public static final Map<String, ArrayList<LyricLine>> lyrics = new HashMap<String, ArrayList<LyricLine>>();
 
-    public static JLabel label;
+    public static JLabel label = new JLabel();
     private static float totalTime;
     private static boolean songStarted = false;
     private static int currentLine;
@@ -113,6 +111,7 @@ public class LyricDisplay {
     /**
      * Starts the playback of the lyrics.
      * Puts the text in the JLabel.
+     * 
      * @param title title of the song of the lyrics to display.
      */
     public static void start(String title) {
@@ -139,17 +138,18 @@ public class LyricDisplay {
     /**
      * Invoked to display the next line if the time has been reached for the line.
      * The time elapsed is stored in totalTime.
+     * 
      * @param delta the time between the last invoke.
      */
     public static void step(float delta) {
         if (!songStarted)
             return;
-        if (currentLine + 1 > lyrics.get(currentSong).size()) {
+        if (currentLine + 1 >= lyrics.get(currentSong).size()) {
             stop();
             return;
         }
         float nextTime = lyrics.get(currentSong).get(currentLine + 1).getTime();
-        if (totalTime > nextTime) {
+        if (totalTime >= nextTime) {
             label.setFont(new Font("MS Sans Serif", Font.PLAIN, 48));
             currentLine++;
             label.setText(lyrics.get(currentSong).get(currentLine).getLine());
