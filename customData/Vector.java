@@ -1,24 +1,25 @@
 /**
-	The Vector class provides a way to simplify management of coordinates.
-    Inspired from Godot Game Engine's Vector system, it attempts to replicate
-    the usability of it. Java's Vector class implements a growing array of objects.
-    While instances of this Vector class holds an abscissa and ordinate.
-    It also provides a list of features to simplify common operations on vectors.
-	
-	@author Alinus Abuke (230073) //Neil Biason (xxxxxx) TODO
-	@version 02 September 2023
-	
-	I have not discussed the Java language code in my program 
-	with anyone other than my instructor or the teaching assistants 
-	assigned to this course.
+    The Vector class provides a way to simplify the management of coordinates, 
+    inspired by the Godot Game Engine's Vector system, aiming to replicate its 
+    usability. Java's Vector class implements a growing array of objects, with 
+    instances of this Vector class holding an abscissa and ordinate, and providing 
+    a list of features to simplify common operations on vectors.
 
-	I have not used Java language code obtained from another student, 
-	or any other unauthorized source, either modified or unmodified.
+    @author Alinus Abuke (230073)	
+    @author Neil Aldous Biason (230940)
+    @version 06 March 2024
 
-	If any Java language code or documentation used in my program 
-	was obtained from another source, such as a textbook or website, 
-	that has been clearly noted with a proper citation in the comments 
-	of my program.
+    We have not discussed the Java language code in our program 
+    with anyone other than our instructor or the teaching assistants 
+    assigned to this course.
+
+    We have not used Java language code obtained from another student, 
+    or any other unauthorized source, either modified or unmodified.
+
+    If any Java language code or documentation used in our program 
+    was obtained from another source, such as a textbook or website, 
+    that has been clearly noted with a proper citation in the comments 
+    of our program.
 **/
 
 package customData;
@@ -45,6 +46,7 @@ public final class Vector {
 
     /**
      * Constructs a Vector with set values.
+     * 
      * @param x x-coordinate of the Vector.
      * @param y y-coordinate of the Vector.
      */
@@ -55,6 +57,7 @@ public final class Vector {
 
     /**
      * Returns the x-coordinate of the Vector.
+     * 
      * @return x
      */
     public double getX() {
@@ -63,6 +66,7 @@ public final class Vector {
 
     /**
      * Returns the y-coordinate of the Vector.
+     * 
      * @return y
      */
     public double getY() {
@@ -71,6 +75,7 @@ public final class Vector {
 
     /**
      * Sets the x-coordinate of the Vector to the value.
+     * 
      * @param x the new x-coordinate of the Vector.
      */
     public void setX(double x) {
@@ -79,6 +84,7 @@ public final class Vector {
 
     /**
      * Sets the y-coordinate of the Vector to the value.
+     * 
      * @param y the new y-coordinate of the Vector.
      */
     public void setY(double y) {
@@ -87,6 +93,7 @@ public final class Vector {
 
     /**
      * Adds a Vector to the current vector. MUTATES THE CURRENT VECTOR!
+     * 
      * @param vector the vector to be added to the current vector.
      */
     public Vector add(Vector vector) {
@@ -97,6 +104,7 @@ public final class Vector {
 
     /**
      * Member method that adds two vectors together and returns their sum.
+     * 
      * @param a the first vector.
      * @param b the second vector.
      * @return the sum of the two vectors.
@@ -107,6 +115,7 @@ public final class Vector {
 
     /**
      * Subtracts a vector from the current vector. MUTATES THE CURRENT VECTOR!
+     * 
      * @param vector the amount vector to be subtracted
      * @return the now subtracted vector.
      */
@@ -118,6 +127,7 @@ public final class Vector {
 
     /**
      * Vector Member method that subtracts a vector from another: a - b
+     * 
      * @param a minuend.
      * @param b subtrahend.
      * @return difference
@@ -128,6 +138,7 @@ public final class Vector {
 
     /**
      * Multiplies the vector by a number n
+     * 
      * @param n the number to multiply the vector by.
      * @return a new Vector.
      */
@@ -137,6 +148,7 @@ public final class Vector {
 
     /**
      * Class Member method that casts the Vector into a Dimension type
+     * 
      * @param vector Vector to cast into Dimension type
      * @return dimension object from vector.
      */
@@ -146,9 +158,11 @@ public final class Vector {
 
     /**
      * Applies Linear Interpolation between two vectors.
+     * 
      * @param a start vector
      * @param b end vector
-     * @param i the percentage of the location of the point when a = 0% and b = 100%;
+     * @param i the percentage of the location of the point when a = 0% and b =
+     *          100%;
      */
     public static Vector lerp(Vector a, Vector b, float i) {
         return Vector.add(a, Vector.subtract(b, a).multiply(i));
@@ -156,6 +170,7 @@ public final class Vector {
 
     /**
      * Converts a Point object into a Vector object;
+     * 
      * @param pt the point object
      * @return the new vector.
      */

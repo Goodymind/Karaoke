@@ -1,7 +1,7 @@
 /**
-    This class constructs a line segment defined by two points: 
-    the start and end points, as well as parameters for thickness 
-    and color. It implements the Drawing Object interface.
+    This class constructs a line defined by two points: the start 
+    and end points, as well as parameters for thickness and color. 
+    It implements the Drawing Object interface.
 
     @author Alinus Abuke (230073)	
     @author Neil Aldous Biason (230940)
