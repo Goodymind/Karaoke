@@ -1,10 +1,32 @@
+/**
+	The Vector class provides a way to simplify management of coordinates.
+    Inspired from Godot Game Engine's Vector system, it attempts to replicate
+    the usability of it. Java's Vector class implements a growing array of objects.
+    While instances of this Vector class holds an abscissa and ordinate.
+    It also provides a list of features to simplify common operations on vectors.
+	
+	@author Alinus Abuke (230073) //Neil Biason (xxxxxx) TODO
+	@version 02 September 2023
+	
+	I have not discussed the Java language code in my program 
+	with anyone other than my instructor or the teaching assistants 
+	assigned to this course.
+
+	I have not used Java language code obtained from another student, 
+	or any other unauthorized source, either modified or unmodified.
+
+	If any Java language code or documentation used in my program 
+	was obtained from another source, such as a textbook or website, 
+	that has been clearly noted with a proper citation in the comments 
+	of my program.
+**/
+
 package customData;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 
-public class Vector {
+public final class Vector {
 
     public static final Vector LEFT = new Vector(-1, 0);
     public static final Vector RIGHT = new Vector(1, 0);
@@ -14,108 +36,129 @@ public class Vector {
     double x;
     double y;
 
+    /**
+     * Constructs a Vector with values set to ZERO.
+     */
     public Vector() {
         x = y = 0;
     }
 
+    /**
+     * Constructs a Vector with set values.
+     * @param x x-coordinate of the Vector.
+     * @param y y-coordinate of the Vector.
+     */
     public Vector(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public double[] get() {
-        return new double[] { x, y };
-    }
-
+    /**
+     * Returns the x-coordinate of the Vector.
+     * @return x
+     */
     public double getX() {
         return x;
     }
 
+    /**
+     * Returns the y-coordinate of the Vector.
+     * @return y
+     */
     public double getY() {
         return y;
     }
 
-    public void set() {
-        x = y = 0;
-    }
-
-    public void set(double n) {
-        x = y = n;
-    }
-
-    public void set(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public void set(Vector vector) {
-        this.x = vector.x;
-        this.y = vector.y;
-    }
-
+    /**
+     * Sets the x-coordinate of the Vector to the value.
+     * @param x the new x-coordinate of the Vector.
+     */
     public void setX(double x) {
         this.x = x;
     }
 
+    /**
+     * Sets the y-coordinate of the Vector to the value.
+     * @param y the new y-coordinate of the Vector.
+     */
     public void setY(double y) {
         this.y = y;
     }
 
+    /**
+     * Adds a Vector to the current vector. MUTATES THE CURRENT VECTOR!
+     * @param vector the vector to be added to the current vector.
+     */
     public Vector add(Vector vector) {
         this.x += vector.x;
         this.y += vector.y;
         return this;
     }
 
-    public Vector add(double n) {
-        x += n;
-        y += n;
-        return this;
-    }
-
+    /**
+     * Member method that adds two vectors together and returns their sum.
+     * @param a the first vector.
+     * @param b the second vector.
+     * @return the sum of the two vectors.
+     */
     public static Vector add(Vector a, Vector b) {
         return new Vector(a.getX() + b.getX(), a.getY() + b.getY());
     }
 
-    public static Vector add(Vector vector, double n) {
-        return new Vector(vector.getX() + n, vector.getY() + n);
-    }
-
+    /**
+     * Subtracts a vector from the current vector. MUTATES THE CURRENT VECTOR!
+     * @param vector the amount vector to be subtracted
+     * @return the now subtracted vector.
+     */
     public Vector subtract(Vector vector) {
         this.x += -vector.x;
         this.y += -vector.y;
         return this;
     }
 
+    /**
+     * Vector Member method that subtracts a vector from another: a - b
+     * @param a minuend.
+     * @param b subtrahend.
+     * @return difference
+     */
     public static Vector subtract(Vector a, Vector b) {
         return new Vector(a.getX() - b.getX(), a.getY() - b.getY());
     }
 
+    /**
+     * Multiplies the vector by a number n
+     * @param n the number to multiply the vector by.
+     * @return a new Vector.
+     */
     public Vector multiply(double n) {
         return new Vector(this.x * n, this.y * n);
     }
 
-    @Override
-    public String toString() {
-        return String.format("(%f, %f)", x, y);
-    }
-
-    public Dimension toDimension() {
-        return new Dimension((int) x, (int) y);
-    }
-
+    /**
+     * Class Member method that casts the Vector into a Dimension type
+     * @param vector Vector to cast into Dimension type
+     * @return dimension object from vector.
+     */
     public static Dimension toDimension(Vector vector) {
         return new Dimension((int) vector.x, (int) vector.y);
     }
 
-    public Point2D.Double toPoint2D() {
-        return new Point2D.Double(x, y);
-    }
-
+    /**
+     * Applies Linear Interpolation between two vectors.
+     * @param a start vector
+     * @param b end vector
+     * @param i the percentage of the location of the point when a = 0% and b = 100%;
+     */
     public static Vector lerp(Vector a, Vector b, float i) {
         return Vector.add(a, Vector.subtract(b, a).multiply(i));
     }
 
+    /**
+     * Converts a Point object into a Vector object;
+     * @param pt the point object
+     * @return the new vector.
+     */
     public static Vector pointToVector(Point pt) {
         return new Vector(pt.getX(), pt.getY());
     }
